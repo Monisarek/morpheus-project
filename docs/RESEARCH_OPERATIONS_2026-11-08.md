@@ -1,5 +1,8 @@
 # MORPHEUS — operational state (verified 2026-11-08)
 
+> **POST-SNAPSHOT UPDATE (2026-11-08):** [PR #11](https://github.com/Monisarek/morpheus-project/pull/11) (9 discovery files) has been independently reviewed, retargeted from the already merged #8 branch to main and **MERGED**. GitHub Actions [42415818137](https://github.com/Monisarek/morpheus-project/actions/runs/42415818137) SUCCESS; Windows 63/63 and two Europe PMC search lanes + PubMed MCP + DataCite are reported by local Codex, not independently inspected private artifacts. [MR-021.3 / Issue #10](https://github.com/Monisarek/morpheus-project/issues/10) **CLOSED** for scoped public metadata discovery and fail-closed `NO_GO` preflight only. OpenAlex MCP remains OFF; expanded science source coverage is not implemented. **EEG-003 E25 / Issue #9 OPEN, restricted real-data NO-GO.** This note supersedes older MR-021.3 TODO/OPEN statements below; retain old snapshot for provenance.
+
+
 > **Dated snapshot, not a live feed.** Always recheck the current GitHub PR/issues/CI and authorized Slack task registry. Public-safe only; no raw EEG, patient identifiers, secret URLs or DUA-only materials.
 
 ## Start here
