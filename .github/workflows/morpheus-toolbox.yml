@@ -1,4 +1,5 @@
 name: MORPHEUS Tool Library
+# GitHub standard runners are free for our public repo. Keep checks small.
 on:
   pull_request:
     paths:
@@ -6,16 +7,22 @@ on:
       - "tests/test_morpheus_toolbox.py"
       - ".github/workflows/morpheus-toolbox.yml"
       - "AGENTS.md"
-  push:
-    paths:
-      - "morpheus_tools/**"
-      - "tests/test_morpheus_toolbox.py"
-      - ".github/workflows/morpheus-toolbox.yml"
+      - ".agents/skills/morpheus-toolbox/SKILL.md"
+      - "docs/TOOLBOX.md"
+  workflow_dispatch:
+
+# Avoid duplicate push + PR runs and stale concurrent checks.
+concurrency:
+  group: toolbox-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
+
 jobs:
   stdlib-tests:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     strategy:
       fail-fast: false
       matrix:
