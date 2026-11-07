@@ -77,6 +77,8 @@ def _run(entry, argv):
     args = parser.parse_args(argv)
     args_values = vars(args).copy()
     cache_mode = args_values.pop("cache_mode")
+    if entry.get("network") and cache_mode != "off":
+        raise ValueError("network_evidence_cache_reuse_disabled")
     cache_key = None
     root = CACHE_DIR.resolve()
     tool_file = Path(mod.__file__).resolve()

@@ -34,8 +34,8 @@ class ToolLibraryTests(unittest.TestCase):
     def test_catalog_and_validation(self):
         code, result = self.call("validate")
         self.assertEqual(code, 0)
-        self.assertEqual(result["total"], 14)
-        self.assertEqual(result["executable"], 4)
+        self.assertEqual(result["total"], 15)
+        self.assertEqual(result["executable"], 5)
         code, matches = self.call("find", "пустое", "множество")
         self.assertEqual(code, 0)
         self.assertTrue(any(x["id"] == "dataset.empty-check" for x in matches))
@@ -187,7 +187,7 @@ class ToolLibraryTests(unittest.TestCase):
     def test_existing_eeg_commands_discoverable_but_not_exec_from_catalog(self):
         code, listing = self.call("list")
         self.assertEqual(code, 0)
-        self.assertEqual(len(listing), 14)
+        self.assertEqual(len(listing), 15)
         self.assertTrue(any(x["id"] == "eeg.holdout" and x["kind"] == "documented_external" for x in listing))
         code, info = self.call("describe", "eeg.baseline")
         self.assertEqual(code, 0)

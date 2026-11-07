@@ -17,4 +17,6 @@
 8. At checkpoint, write concise handoff of state, artifact paths, completed gates and next command; wait on quotas rather than rerunning completed work.
 
 ## Task operations
+
+Before proposing a scientific experiment, apply `.agents/skills/morpheus-science-discovery/SKILL.md` and run the existing quality gate's discovery preflight. Discovery metadata cannot grant permission to execute on real data.
 Slack MORPHEUS list records goals and short statuses; GitHub branches/PRs hold tested code and safe aggregate evidence; private large files go to restricted Drive; Entire is a session audit trail. Updating a list or reporting `DONE` is not scientific verification. A Slack mention is not authorization for arbitrary code execution.
