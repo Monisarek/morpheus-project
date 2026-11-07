@@ -1,0 +1,27 @@
+{
+  "status": "AUDIT",
+  "records_recovered": 2,
+  "duplicate_pairs": 2,
+  "conflicting_free_text_event_values_archived": 2,
+  "conflicting_auxiliary_values_masked": 0,
+  "complementary_event_fields_merged": 4,
+  "recovered_4ms_grid_validated": true,
+  "competing_structured_values": false,
+  "structured_event_inventory_preserved": true,
+  "source_archive_unchanged": true,
+  "clinical_counts_match_published_metadata": true,
+  "clinical_events": {
+    "LOC": 10,
+    "ROC": 10,
+    "MOAAS": 92
+  },
+  "window_qc": {
+    "eligible": 247,
+    "qc_FAIL": 186,
+    "qc_WARN": 111,
+    "no_observation_in_horizon": 42,
+    "right_censored": 8
+  },
+  "used_in_models": false,
+  "clinical_labels_independently_verified": false
+}
