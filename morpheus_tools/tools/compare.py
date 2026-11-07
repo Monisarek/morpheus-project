@@ -1,8 +1,8 @@
 """Compare reproducibility artifacts without displaying hashes or row-level content."""
 import argparse
 import hashlib
-import os
-from pathlib import Path
+
+from ..paths import iter_files, local_path
 
 
 def add_arguments(parser: argparse.ArgumentParser, operation: str):
@@ -23,33 +23,23 @@ def _digest(path):
 
 
 def _collect(path, limit):
-    if path.is_symlink():
-        raise ValueError("symlink_not_allowed")
     if path.is_file():
-        return {"__single_file__": path}
+        return {"": path}
     if not path.is_dir():
         raise ValueError("not_file_or_directory")
     items = {}
-    for root, dirs, files in os.walk(path, followlinks=False):
-        if any(Path(root, x).is_symlink() for x in dirs):
-            raise ValueError("symlink_not_allowed")
-        dirs[:] = sorted(x for x in dirs if x not in {".git", ".morpheus", "__pycache__"})
-        for name in sorted(files):
-            file = Path(root, name)
-            if file.is_symlink():
-                raise ValueError("symlink_not_allowed")
-            if file.is_file():
-                items[file.relative_to(path).as_posix()] = file
-            if len(items) > limit:
-                raise ValueError("too_many_files")
+    for file in iter_files(path):
+        items[file.relative_to(path).as_posix()] = file
+        if len(items) > limit:
+            raise ValueError("too_many_files")
     return items
 
 
 def execute(args, operation):
     if not 1 <= args.max_files <= 100000:
         raise ValueError("max_files_out_of_range")
-    left = _collect(Path(args.left).expanduser().resolve(), args.max_files)
-    right = _collect(Path(args.right).expanduser().resolve(), args.max_files)
+    left = _collect(local_path(args.left), args.max_files)
+    right = _collect(local_path(args.right), args.max_files)
     lk, rk = set(left), set(right)
     only_left, only_right = lk - rk, rk - lk
     common = lk & rk

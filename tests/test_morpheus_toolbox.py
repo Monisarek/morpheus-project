@@ -73,6 +73,25 @@ class ToolLibraryTests(unittest.TestCase):
         self.assertEqual(code, 2)
         self.assertEqual(out["missing_columns"], ["subject_id"])
 
+    def test_incomplete_jsonl_does_not_claim_unseen_column_is_missing(self):
+        file = self.put("split.jsonl", '{"split":"train"}\n{"cohort":"test"}\n')
+        args = ("run", "dataset.empty-check", "--input", file, "--require-column", "cohort",
+                "--expect-subset", "cohort=test")
+        code, out = self.call(*args, "--max-rows", "1")
+        self.assertEqual((code, out["status"]), (3, "partial"))
+        self.assertFalse(out["scan_complete"])
+        self.assertEqual(out["missing_columns"], [])
+        self.assertEqual(out["empty_subsets"], [])
+        check = json.loads(Path(out["report_path"]).read_text("utf-8"))["checks"][0]
+        self.assertIsNone(check["column_present"])
+        self.assertIsNone(check["empty"])
+
+        code, out = self.call(*args)
+        self.assertEqual((code, out["status"]), (0, "ok"))
+        check = json.loads(Path(out["report_path"]).read_text("utf-8"))["checks"][0]
+        self.assertTrue(check["column_present"])
+        self.assertEqual(check["matching_rows"], 1)
+
     def test_profile_no_raw_values(self):
         secret = "SENSITIVE_PARTICIPANT_999"
         file = self.put("data.csv", "split,participant,score\ntrain," + secret + ",2\ntest,,\n")
@@ -82,6 +101,27 @@ class ToolLibraryTests(unittest.TestCase):
         self.assertNotIn(secret, raw)
         report = json.loads(Path(out["report_path"]).read_text("utf-8"))
         self.assertEqual(report["column_presence"]["participant"]["empty"], 1)
+
+    def test_invalid_arguments_redact_values_and_exit_one(self):
+        canary = "FAUX_ARGUMENT_TOKEN_7823"
+        for args in ((canary,), ("run", "dataset.profile", "--input", "sample.csv", "--max-rows", canary)):
+            with self.subTest(args=args):
+                stdout, stderr = io.StringIO(), io.StringIO()
+                with contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
+                    code = main(list(args))
+                self.assertEqual(code, 1)
+                self.assertEqual(json.loads(stdout.getvalue())["code"], "invalid_arguments")
+                self.assertNotIn(canary, stdout.getvalue() + stderr.getvalue())
+
+    def test_discovery_json_survives_legacy_windows_encoding(self):
+        buffer = io.BytesIO()
+        with io.TextIOWrapper(buffer, encoding="cp1252") as output:
+            with contextlib.redirect_stdout(output):
+                code = main(["describe", "dataset.empty-check"])
+            output.flush()
+            result = json.loads(buffer.getvalue())
+        self.assertEqual(code, 0)
+        self.assertIn("пустое множество", result["triggers"])
 
     def test_jsonl_and_invalid_record(self):
         file = self.put("data.jsonl", '{"a":1,"b":null}\n{"a":2}\n')

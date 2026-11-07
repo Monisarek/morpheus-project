@@ -10,36 +10,31 @@ from pathlib import Path
 
 from . import __version__
 from . import registry
+from .paths import iter_files, local_path
 
 CACHE_DIR = Path(os.environ.get("MORPHEUS_TOOL_CACHE", ".morpheus/tool_runs"))
 
 
+class SafeArgumentParser(argparse.ArgumentParser):
+    def error(self, message):
+        raise ValueError("invalid_arguments")
+
+
 def _json(value):
-    return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+    return json.dumps(value, sort_keys=True, separators=(",", ":"))
 
 
 def _fingerprint(path, mode):
-    path = Path(path).expanduser()
-    if path.is_symlink():
-        raise ValueError("symlinks_not_allowed_as_input")
-    path = path.resolve(strict=True)
+    path = local_path(path)
     h = hashlib.sha256()
     if path.is_file():
         files = [(".", path)]
     elif path.is_dir():
         files = []
-        for root, folders, names in os.walk(path, followlinks=False):
-            if any(Path(root, x).is_symlink() for x in folders):
-                raise ValueError("symlinks_not_allowed_in_input_tree")
-            folders[:] = sorted(x for x in folders if x not in {".git", ".morpheus", "__pycache__"})
-            for name in sorted(names):
-                f = Path(root, name)
-                if f.is_symlink():
-                    raise ValueError("symlinks_not_allowed_in_input_tree")
-                if f.is_file():
-                    files.append((f.relative_to(path).as_posix(), f))
-                if len(files) > 20000:
-                    raise ValueError("too_many_input_files_for_cache")
+        for file in iter_files(path):
+            files.append((file.relative_to(path).as_posix(), file))
+            if len(files) > 20000:
+                raise ValueError("too_many_input_files_for_cache")
     else:
         raise ValueError("not_file_or_directory")
     for name, file in files:
@@ -75,7 +70,7 @@ def _safe_write(path, value):
 
 
 def _run(entry, argv):
-    parser = argparse.ArgumentParser(prog=f"python -m morpheus_tools run {entry['id']}")
+    parser = SafeArgumentParser(prog=f"python -m morpheus_tools run {entry['id']}")
     mod = registry.resolve(entry)
     mod.add_arguments(parser, entry["operation"])
     parser.add_argument("--cache-mode", choices=("off", "metadata", "content"), default="off")
@@ -132,11 +127,11 @@ def _status_code(status):
 
 def main(argv=None):
     argv = list(sys.argv[1:] if argv is None else argv)
-    p = argparse.ArgumentParser(prog="python -m morpheus_tools", description="MORPHEUS reusable deterministic tools")
+    p = SafeArgumentParser(prog="python -m morpheus_tools", description="MORPHEUS reusable deterministic tools")
     p.add_argument("command", choices=["list", "find", "describe", "validate", "run", "version"])
     p.add_argument("rest", nargs=argparse.REMAINDER)
-    opt = p.parse_args(argv)
     try:
+        opt = p.parse_args(argv)
         if opt.command == "version":
             print(__version__)
             return 0

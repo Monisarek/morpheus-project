@@ -119,10 +119,14 @@ def execute(args, operation):
         for i, (col, value) in enumerate(expected):
             if str(row.get(col, "")) == value and col in row:
                 hits[i] += 1
-    missing_required = sorted(set(required + [x[0] for x in expected]) - set(headers))
-    checks = [{"check_id": f"check_{i+1}", "column_present": col in headers,
-               "matching_rows": hits[i],
-               "empty": hits[i] == 0 if complete else None} for i, (col, _) in enumerate(expected)]
+    schema_complete = complete or path.suffix.lower() != ".jsonl"
+    missing_required = sorted(set(required + [x[0] for x in expected]) - set(headers)) if schema_complete else []
+    checks = []
+    for i, (column, _) in enumerate(expected):
+        present = column in headers
+        checks.append({"check_id": f"check_{i+1}",
+                       "column_present": present if present or schema_complete else None,
+                       "matching_rows": hits[i], "empty": hits[i] == 0 if complete else None})
     if operation == "profile":
         by_col = {col: {"nonempty": nonempty[col], "empty": rows - nonempty[col]} for col in headers}
         return {"status": "ok" if complete else "partial",
