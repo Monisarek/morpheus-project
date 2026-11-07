@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "tools": [
+    {
+      "id": "dataset.profile",
+      "version": "1.0.0",
+      "description": "Проверка размеров, пустых значений и схемы CSV/TSV/JSONL/Parquet без вывода исходных строк",
+      "triggers": [
+        "profile",
+        "schema",
+        "missing",
+        "null",
+        "пустые значения",
+        "колонки",
+        "качество данных"
+      ],
+      "module": "morpheus_tools.tools.tabular",
+      "operation": "profile",
+      "input_types": [
+        "csv",
+        "tsv",
+        "jsonl",
+        "parquet"
+      ],
+      "output": "aggregate-only JSON",
+      "example": "py -m morpheus_tools run dataset.profile --input data.csv --max-rows 50000",
+      "risk": "read_only"
+    },
+    {
+      "id": "dataset.empty-check",
+      "version": "1.0.0",
+      "description": "Проверка пустых таблиц, пустых подмножеств и обязательных столбцов без загрузки набора данных в LLM",
+      "triggers": [
+        "empty",
+        "subset",
+        "split",
+        "пустое множество",
+        "пустая выборка",
+        "train",
+        "validation",
+        "QC"
+      ],
+      "module": "morpheus_tools.tools.tabular",
+      "operation": "empty_check",
+      "input_types": [
+        "csv",
+        "tsv",
+        "jsonl",
+        "parquet"
+      ],
+      "output": "aggregate-only JSON",
+      "example": "py -m morpheus_tools run dataset.empty-check --input data.csv --require-column split --expect-subset split=train --expect-subset split=validation",
+      "risk": "read_only"
+    },
+    {
+      "id": "log.triage",
+      "version": "1.0.0",
+      "description": "Потоковая сводка длинных журналов: ошибки, предупреждения, квоты, таймауты и номера строк без текста секретов",
+      "triggers": [
+        "log",
+        "error",
+        "traceback",
+        "quota",
+        "timeout",
+        "лог",
+        "журнал",
+        "ошибки"
+      ],
+      "module": "morpheus_tools.tools.logs",
+      "operation": "triage",
+      "input_types": [
+        "text"
+      ],
+      "output": "aggregate-only JSON",
+      "example": "py -m morpheus_tools run log.triage --input runs/task.log",
+      "risk": "read_only"
+    },
+    {
+      "id": "artifact.compare",
+      "version": "1.0.0",
+      "description": "Проверка идентичности файлов или двух деревьев артефактов; сравнение совпало/не совпало без публикации SHA",
+      "triggers": [
+        "compare",
+        "diff",
+        "replay",
+        "manifest",
+        "checksum",
+        "сравни",
+        "артефакты",
+        "воспроизводимость"
+      ],
+      "module": "morpheus_tools.tools.compare",
+      "operation": "compare",
+      "input_types": [
+        "file",
+        "directory"
+      ],
+      "output": "boolean/count JSON, no hashes",
+      "example": "py -m morpheus_tools run artifact.compare --left runs/replay-a --right runs/replay-b --cache-mode off",
+      "risk": "read_only"
+    }
+  ]
+}

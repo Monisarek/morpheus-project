@@ -1,0 +1,38 @@
+name: MORPHEUS Tool Library
+# GitHub standard runners are free for our public repo. Keep checks small.
+on:
+  pull_request:
+    paths:
+      - "morpheus_tools/**"
+      - "tests/test_morpheus*.py"
+      - ".github/workflows/morpheus-toolbox.yml"
+      - "AGENTS.md"
+      - ".agents/skills/morpheus-toolbox/SKILL.md"
+      - "docs/TOOLBOX.md"
+  workflow_dispatch:
+
+# Avoid duplicate push + PR runs and stale concurrent checks.
+concurrency:
+  group: toolbox-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  stdlib-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Validate the catalog
+        run: python -m morpheus_tools validate
+      - name: Run deterministic toolbox tests
+        run: python -m unittest discover -s tests -p 'test_morpheus*.py' -v

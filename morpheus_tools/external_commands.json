@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "tools": [
+    {
+      "id": "eeg.inspect",
+      "version": "existing",
+      "description": "Проверить доступные DOSE-I архивы, метаданные и качество источников через существующий EEG CLI",
+      "triggers": [
+        "eeg",
+        "dose-i",
+        "dataset",
+        "inspect",
+        "архив"
+      ],
+      "example": "py -m ocon9000 inspect",
+      "status": "documented_in_existing_readme_not_rerun",
+      "risk": "read_only"
+    },
+    {
+      "id": "eeg.freeze",
+      "version": "existing",
+      "description": "Зафиксировать протокол/сплит DOSE-I (не запускать автоматически и не перезаписывать состоявшийся freeze)",
+      "triggers": [
+        "freeze",
+        "split",
+        "protocol",
+        "зафиксировать"
+      ],
+      "example": "py -m ocon9000 freeze --run runs/dosei-v2-replay",
+      "status": "documented_in_existing_readme_not_rerun",
+      "risk": "controlled_write"
+    },
+    {
+      "id": "eeg.build",
+      "version": "existing",
+      "description": "Подготовить производные окна ЭЭГ, события и контроль качества по утверждённому протоколу",
+      "triggers": [
+        "build",
+        "eeg",
+        "windows",
+        "events",
+        "qc",
+        "окна"
+      ],
+      "example": "py -m ocon9000 build --run runs/dosei-v2-replay",
+      "status": "documented_in_existing_readme_not_rerun",
+      "risk": "controlled_write"
+    },
+    {
+      "id": "eeg.baseline",
+      "version": "existing",
+      "description": "Сравнить базовые прогнозные модели на единой разрешённой когорте",
+      "triggers": [
+        "baseline",
+        "model",
+        "ap",
+        "метрики"
+      ],
+      "example": "py -m ocon9000 baseline --run runs/dosei-v2-replay",
+      "status": "documented_in_existing_readme_not_rerun",
+      "risk": "controlled_write"
+    },
+    {
+      "id": "eeg.trajectory",
+      "version": "existing",
+      "description": "Выполнить анализ временных траекторий клинических сигналов/переходов",
+      "triggers": [
+        "trajectory",
+        "time",
+        "clinical",
+        "траектория"
+      ],
+      "example": "py -m ocon9000 trajectory --run runs/dosei-v2-replay",
+      "status": "documented_in_existing_readme_not_rerun",
+      "risk": "controlled_write"
+    },
+    {
+      "id": "eeg.falsify",
+      "version": "existing",
+      "description": "Выполнить существующий набор проверок на ложные выводы и опровержения",
+      "triggers": [
+        "falsify",
+        "negative",
+        "sensitivity",
+        "фальсификация"
+      ],
+      "example": "py -m ocon9000 falsify --run runs/dosei-v2-replay",
+      "status": "documented_in_existing_readme_not_rerun",
+      "risk": "controlled_write"
+    },
+    {
+      "id": "eeg.report",
+      "version": "existing",
+      "description": "Собрать научный отчёт существующим EEG CLI",
+      "triggers": [
+        "report",
+        "eeg",
+        "results",
+        "отчёт"
+      ],
+      "example": "py -m ocon9000 report --run runs/dosei-v2-replay",
+      "status": "documented_in_existing_readme_not_rerun",
+      "risk": "controlled_write"
+    },
+    {
+      "id": "eeg.experiment",
+      "version": "existing",
+      "description": "Выполнить зарегистрированную экспериментальную гипотезу из research/hypotheses.jsonl",
+      "triggers": [
+        "experiment",
+        "hypothesis",
+        "registered",
+        "гипотеза"
+      ],
+      "example": "py -m ocon9000 experiment --help",
+      "status": "documented_in_existing_readme_not_rerun",
+      "risk": "controlled_write"
+    },
+    {
+      "id": "eeg.seal",
+      "version": "existing",
+      "description": "Запечатать кандидата после научного ревью; не вызывать без утверждения",
+      "triggers": [
+        "seal",
+        "review",
+        "candidate",
+        "кандидат"
+      ],
+      "example": "py -m ocon9000 seal --help",
+      "status": "documented_in_existing_readme_not_rerun",
+      "risk": "approval_required"
+    },
+    {
+      "id": "eeg.holdout",
+      "version": "existing",
+      "description": "Открыть holdout только в зарегистрированном запуске по утверждённому протоколу",
+      "triggers": [
+        "holdout",
+        "test",
+        "freeze",
+        "контрольная"
+      ],
+      "example": "py -m ocon9000 holdout --help",
+      "status": "documented_in_existing_readme_not_rerun",
+      "risk": "approval_required"
+    }
+  ]
+}
