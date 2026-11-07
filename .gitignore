@@ -7,3 +7,5 @@ __pycache__/
 **/data/*
 !**/data/README.md
 **/runs/*/
+.morpheus/
+*.py[cod]
