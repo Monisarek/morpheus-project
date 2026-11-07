@@ -1,0 +1,317 @@
+{
+  "group_unit": "recording",
+  "scoring_unit": "window",
+  "fit_split": "train_and_validation",
+  "evaluation_split": "holdout",
+  "seed": 9000,
+  "eeg_features": [
+    "eeg_1_abs_alpha",
+    "eeg_1_abs_beta",
+    "eeg_1_abs_delta",
+    "eeg_1_abs_gamma",
+    "eeg_1_abs_theta",
+    "eeg_1_edge95_hz",
+    "eeg_1_log_spectral_slope",
+    "eeg_1_median_hz",
+    "eeg_1_rel_alpha",
+    "eeg_1_rel_beta",
+    "eeg_1_rel_delta",
+    "eeg_1_rel_gamma",
+    "eeg_1_rel_theta",
+    "eeg_1_rms_uv",
+    "eeg_1_spectral_entropy",
+    "eeg_2_abs_alpha",
+    "eeg_2_abs_beta",
+    "eeg_2_abs_delta",
+    "eeg_2_abs_gamma",
+    "eeg_2_abs_theta",
+    "eeg_2_edge95_hz",
+    "eeg_2_log_spectral_slope",
+    "eeg_2_median_hz",
+    "eeg_2_rel_alpha",
+    "eeg_2_rel_beta",
+    "eeg_2_rel_delta",
+    "eeg_2_rel_gamma",
+    "eeg_2_rel_theta",
+    "eeg_2_rms_uv",
+    "eeg_2_spectral_entropy"
+  ],
+  "context_features": [
+    "elapsed_s",
+    "dose_mg",
+    "dose_60s_mg",
+    "dose_age_s"
+  ],
+  "cohort": {
+    "train_and_validation": {
+      "records_total": 135,
+      "records_included": 134,
+      "windows_total": 15048,
+      "windows_included": 8278,
+      "windows_excluded": 6770,
+      "positive_windows_included": 2159,
+      "qc_by_target": {
+        "0": {
+          "WARN": 6119,
+          "FAIL": 3216
+        },
+        "1": {
+          "FAIL": 1190,
+          "WARN": 2159
+        },
+        "unobserved": {
+          "FAIL": 914,
+          "WARN": 1450
+        }
+      }
+    },
+    "holdout": {
+      "records_total": 34,
+      "records_included": 34,
+      "windows_total": 3268,
+      "windows_included": 1684,
+      "windows_excluded": 1584,
+      "positive_windows_included": 399,
+      "qc_by_target": {
+        "0": {
+          "FAIL": 642,
+          "WARN": 1285
+        },
+        "1": {
+          "FAIL": 280,
+          "WARN": 399
+        },
+        "unobserved": {
+          "WARN": 396,
+          "FAIL": 266
+        }
+      }
+    }
+  },
+  "models": {
+    "train_prevalence": {
+      "average_precision": {
+        "value": 0.23693586698337293,
+        "ci95": [
+          0.19276673822013274,
+          0.29089046220381015
+        ]
+      },
+      "auroc": {
+        "value": 0.5,
+        "ci95": [
+          0.5,
+          0.5
+        ]
+      },
+      "brier": {
+        "value": 0.18136732163383526,
+        "ci95": [
+          0.16023785196695547,
+          0.20717792770691223
+        ]
+      }
+    },
+    "context_logistic": {
+      "average_precision": {
+        "value": 0.28271823350276803,
+        "ci95": [
+          0.22630868439168095,
+          0.347059589808761
+        ]
+      },
+      "auroc": {
+        "value": 0.520219810225954,
+        "ci95": [
+          0.45172669939662474,
+          0.581870659949132
+        ]
+      },
+      "brier": {
+        "value": 0.1807478247626249,
+        "ci95": [
+          0.16006179382988012,
+          0.20749869718871333
+        ]
+      }
+    },
+    "single_band_logistic": {
+      "average_precision": {
+        "value": 0.24615504538295474,
+        "ci95": [
+          0.19339062687839415,
+          0.3161024457975641
+        ]
+      },
+      "auroc": {
+        "value": 0.5439727723979209,
+        "ci95": [
+          0.4677506145962496,
+          0.6132908726563453
+        ]
+      },
+      "brier": {
+        "value": 0.18135794999567995,
+        "ci95": [
+          0.1602263241824347,
+          0.2071592203717487
+        ]
+      }
+    },
+    "eeg_logistic": {
+      "average_precision": {
+        "value": 0.3597561828590866,
+        "ci95": [
+          0.2916576426813969,
+          0.44461996868919834
+        ]
+      },
+      "auroc": {
+        "value": 0.6734774679890387,
+        "ci95": [
+          0.6108862049285537,
+          0.7239948092378214
+        ]
+      },
+      "brier": {
+        "value": 0.1711505628125733,
+        "ci95": [
+          0.14875561737466794,
+          0.19752039360978518
+        ]
+      }
+    },
+    "eeg_context_logistic": {
+      "average_precision": {
+        "value": 0.36024552044511615,
+        "ci95": [
+          0.3029108311290392,
+          0.4250353738874081
+        ]
+      },
+      "auroc": {
+        "value": 0.6678739650683126,
+        "ci95": [
+          0.6046288349890784,
+          0.7185558672126449
+        ]
+      },
+      "brier": {
+        "value": 0.17151044498896012,
+        "ci95": [
+          0.1492772532049599,
+          0.19844933123110256
+        ]
+      }
+    },
+    "eeg_random_forest": {
+      "average_precision": {
+        "value": 0.33500642573813466,
+        "ci95": [
+          0.26836260163602466,
+          0.408271218084078
+        ]
+      },
+      "auroc": {
+        "value": 0.6531932945203476,
+        "ci95": [
+          0.5912544891520591,
+          0.7095580495974383
+        ]
+      },
+      "brier": {
+        "value": 0.17275633321909356,
+        "ci95": [
+          0.15048190027384803,
+          0.19843354899633614
+        ]
+      }
+    }
+  },
+  "primary_comparison": {
+    "contrast": "eeg_context_logistic minus context_logistic",
+    "metric": "average_precision",
+    "value": 0.07752728694234812,
+    "ci95": [
+      0.020300089893322465,
+      0.13527627503647238
+    ]
+  },
+  "bootstrap": {
+    "requested": 1000,
+    "valid": 1000,
+    "resampling_unit": "recording"
+  },
+  "train_grouped_cv": {
+    "folds": 5,
+    "out_of_fold_scores": {
+      "context_logistic": {
+        "average_precision": 0.30184340157009104,
+        "auroc": 0.5389323348462988,
+        "brier": 0.19225503410589276
+      },
+      "single_band_logistic": {
+        "average_precision": 0.23977511910991373,
+        "auroc": 0.4617060385116223,
+        "brier": 0.19320311138321616
+      },
+      "eeg_logistic": {
+        "average_precision": 0.3428024732242929,
+        "auroc": 0.5994093825858167,
+        "brier": 0.18978275520906154
+      },
+      "eeg_context_logistic": {
+        "average_precision": 0.3515303512506526,
+        "auroc": 0.6036085599179648,
+        "brier": 0.18973356768840988
+      },
+      "eeg_random_forest": {
+        "average_precision": 0.328443998107289,
+        "auroc": 0.5930715201460973,
+        "brier": 0.18994863598271633
+      }
+    }
+  },
+  "operating_points": {
+    "context_logistic": {
+      "target_train_false_positive_rate": 0.1,
+      "train_oof_threshold_exclusive": 0.33308124424356356,
+      "train_oof_false_positive_rate": 0.09985291714332407,
+      "evaluation_false_positive_rate": 0.09649805447470818,
+      "evaluation_sensitivity": 0.16290726817042606,
+      "unit": "window"
+    },
+    "single_band_logistic": {
+      "target_train_false_positive_rate": 0.1,
+      "train_oof_threshold_exclusive": 0.26949881301201983,
+      "train_oof_false_positive_rate": 0.09985291714332407,
+      "evaluation_false_positive_rate": 0.0,
+      "evaluation_sensitivity": 0.0,
+      "unit": "window"
+    },
+    "eeg_logistic": {
+      "target_train_false_positive_rate": 0.1,
+      "train_oof_threshold_exclusive": 0.38436869063859247,
+      "train_oof_false_positive_rate": 0.09985291714332407,
+      "evaluation_false_positive_rate": 0.09105058365758754,
+      "evaluation_sensitivity": 0.19548872180451127,
+      "unit": "window"
+    },
+    "eeg_context_logistic": {
+      "target_train_false_positive_rate": 0.1,
+      "train_oof_threshold_exclusive": 0.4001437763100718,
+      "train_oof_false_positive_rate": 0.09985291714332407,
+      "evaluation_false_positive_rate": 0.08482490272373541,
+      "evaluation_sensitivity": 0.20050125313283207,
+      "unit": "window"
+    },
+    "eeg_random_forest": {
+      "target_train_false_positive_rate": 0.1,
+      "train_oof_threshold_exclusive": 0.3808165546713153,
+      "train_oof_false_positive_rate": 0.09985291714332407,
+      "evaluation_false_positive_rate": 0.11050583657587548,
+      "evaluation_sensitivity": 0.20802005012531327,
+      "unit": "window"
+    }
+  }
+}

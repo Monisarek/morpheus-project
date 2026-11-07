@@ -1,0 +1,23 @@
+{
+  "accepted_variant": false,
+  "sources": {
+    "ocon9000\\dose.py": "8e8e4c861e339417457f82979b67a1657ed3a5adb8c18b27db0f17332550ad8e",
+    "ocon9000\\experiment.py": "df22e52345b9812d79fd71f9996a699e1eaf6033fd3fa321a66054c3e829d78e",
+    "ocon9000\\features.py": "f1e075e32e4fa69473acda9960a89fb7abdceac9a8f5e64bf3ccc6a120e988ff",
+    "ocon9000\\models.py": "2624cc3b887d8606aa8015efc2344ef7f0ea531b69cb5c56de9bc3c96fe37df2",
+    "ocon9000\\report.py": "7bbc0f9fc04c766314f290cc5b8db9c50c3f863777c79654ced5556978fd0d7f",
+    "ocon9000\\trajectory.py": "2afc5a7c02743fad09bf8cc72d27c3b442b8b57494614cb7b815b3294455b88f",
+    "ocon9000\\__init__.py": "03ce6bc3fe84ee4314e631ec9cd1f96434c718cd6f51dc712178e7a59e94a094",
+    "ocon9000\\__main__.py": "012a24c36d9f43de1fc0c6b72b2b6b2ffbad3af2f1da40054d7095988a896990",
+    "requirements.txt": "f94e69cc8d65324e145bebdd4cf76460f622c01d03ab62e2bda3565cb38b1e34",
+    "research\\hypotheses.jsonl": "f011888b504d79dcf7adf2a55f695da5c41c1ecf7bdcbcfd62ada3cf9b1863f1",
+    "research\\decisions.jsonl": "178e509f9205ec2d350b08c23597cf088b55fd554e55cbc106afffce87691ff1"
+  },
+  "development": {
+    "build_fingerprints.json": "ffd2a41e74056f9964803df3ec78651328b32f53f591b5e297daeb55ff5b0392",
+    "metrics.json": "0659807a82d0faa03bc2c4e520c6094675fa22e6732a2f6002cf61bceb379b6f",
+    "falsification.json": "df9e09fdfd3760cba4437bef5a207beb827dc928902710c0cbfa3c727af32ae7",
+    "trajectory.json": "4474060a31a356a9991acfb8d6209c385ea6176cf57b27ba7fb75cdc23ee8ffd",
+    "variant_metrics.json": "43c77fa99ccffbce4033d2f5d221286d48218ab4b018484608d6d3e73841db26"
+  }
+}

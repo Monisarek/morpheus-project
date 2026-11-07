@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="810" height="439" viewBox="0 0 810 439" role="img">
+<title>Average precision with 95% recording-bootstrap intervals</title>
+<rect width="100%" height="100%" fill="#fff"/>
+<g font-family="Arial, sans-serif" fill="#14283d">
+<text x="25" y="34" font-size="22" font-weight="bold">Average precision · DOSE-I v2</text>
+<text x="25" y="57" font-size="14">Intervals resample recordings. All models use the same eligible windows.</text>
+<line x1="225.0" x2="225.0" y1="83" y2="404" stroke="#d8e1eb"/>
+<text x="225.0" y="424" text-anchor="middle" font-size="12">0.0</text>
+<line x1="333.0" x2="333.0" y1="83" y2="404" stroke="#d8e1eb"/>
+<text x="333.0" y="424" text-anchor="middle" font-size="12">0.2</text>
+<line x1="441.0" x2="441.0" y1="83" y2="404" stroke="#d8e1eb"/>
+<text x="441.0" y="424" text-anchor="middle" font-size="12">0.4</text>
+<line x1="549.0" x2="549.0" y1="83" y2="404" stroke="#d8e1eb"/>
+<text x="549.0" y="424" text-anchor="middle" font-size="12">0.6</text>
+<line x1="657.0" x2="657.0" y1="83" y2="404" stroke="#d8e1eb"/>
+<text x="657.0" y="424" text-anchor="middle" font-size="12">0.8</text>
+<line x1="765.0" x2="765.0" y1="83" y2="404" stroke="#d8e1eb"/>
+<text x="765.0" y="424" text-anchor="middle" font-size="12">1.0</text>
+<text x="25" y="110" font-size="13">train prevalence</text>
+<g><title>validation: 0.278</title><line x1="351.68" x2="403.20" y1="100" y2="100" stroke="#235aab" stroke-width="2"/><circle cx="375.08" cy="100" r="4.5" fill="#235aab"/></g>
+<g><title>holdout: 0.237</title><line x1="329.09" x2="382.08" y1="115" y2="115" stroke="#bb4a28" stroke-width="2"/><circle cx="352.95" cy="115" r="4.5" fill="#bb4a28"/></g>
+<text x="25" y="164" font-size="13">context logistic</text>
+<g><title>validation: 0.327</title><line x1="368.66" x2="438.62" y1="154" y2="154" stroke="#235aab" stroke-width="2"/><circle cx="401.47" cy="154" r="4.5" fill="#235aab"/></g>
+<g><title>holdout: 0.283</title><line x1="347.21" x2="412.41" y1="169" y2="169" stroke="#bb4a28" stroke-width="2"/><circle cx="377.67" cy="169" r="4.5" fill="#bb4a28"/></g>
+<text x="25" y="218" font-size="13">single band logistic</text>
+<g><title>validation: 0.252</title><line x1="338.72" x2="389.94" y1="208" y2="208" stroke="#235aab" stroke-width="2"/><circle cx="361.01" cy="208" r="4.5" fill="#235aab"/></g>
+<g><title>holdout: 0.246</title><line x1="329.43" x2="395.70" y1="223" y2="223" stroke="#bb4a28" stroke-width="2"/><circle cx="357.92" cy="223" r="4.5" fill="#bb4a28"/></g>
+<text x="25" y="272" font-size="13">eeg logistic</text>
+<g><title>validation: 0.333</title><line x1="381.38" x2="436.66" y1="262" y2="262" stroke="#235aab" stroke-width="2"/><circle cx="404.91" cy="262" r="4.5" fill="#235aab"/></g>
+<g><title>holdout: 0.360</title><line x1="382.50" x2="465.09" y1="277" y2="277" stroke="#bb4a28" stroke-width="2"/><circle cx="419.27" cy="277" r="4.5" fill="#bb4a28"/></g>
+<text x="25" y="326" font-size="13">eeg context logistic</text>
+<g><title>validation: 0.360</title><line x1="394.27" x2="448.16" y1="316" y2="316" stroke="#235aab" stroke-width="2"/><circle cx="419.17" cy="316" r="4.5" fill="#235aab"/></g>
+<g><title>holdout: 0.360</title><line x1="388.57" x2="454.52" y1="331" y2="331" stroke="#bb4a28" stroke-width="2"/><circle cx="419.53" cy="331" r="4.5" fill="#bb4a28"/></g>
+<text x="25" y="380" font-size="13">eeg random forest</text>
+<g><title>validation: 0.310</title><line x1="364.05" x2="427.39" y1="370" y2="370" stroke="#235aab" stroke-width="2"/><circle cx="392.22" cy="370" r="4.5" fill="#235aab"/></g>
+<g><title>holdout: 0.335</title><line x1="369.92" x2="445.47" y1="385" y2="385" stroke="#bb4a28" stroke-width="2"/><circle cx="405.90" cy="385" r="4.5" fill="#bb4a28"/></g>
+<text x="590" y="36" fill="#235aab" font-size="13">Validation</text>
+<text x="680" y="36" fill="#bb4a28" font-size="13">Holdout</text>
+</g>
+</svg>

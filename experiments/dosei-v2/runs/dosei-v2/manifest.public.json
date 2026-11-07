@@ -1,0 +1,26 @@
+{
+  "dataset_doi": "10.5281/zenodo.22145442",
+  "dataset_version": 2,
+  "license": "CC-BY-4.0",
+  "dua": "https://zenodo.org/records/22145442/files/Data_Use_Agreement.txt?download=1",
+  "archive_sha256": "d2c4e94ddfbea1b3ad825bf7d61b0571d5e84e868916fb4d86981c3802d4917d",
+  "seed": 9000,
+  "group_unit": "recording",
+  "subject_identity_confirmed": false,
+  "frozen_at_utc": "2026-11-07T08:30:15.047865+00:00",
+  "protocol_sha256": "ea6d38c867d5390f9840ec3bb26c76369d5120640ca8c71d5230528e9e3e1715",
+  "python": "3.10.11",
+  "versions": {
+    "numpy": "2.2.6",
+    "scipy": "1.14.1",
+    "scikit-learn": "1.7.2",
+    "matplotlib": null
+  },
+  "group_counts": {
+    "train": 102,
+    "validation": 34,
+    "holdout": 35
+  },
+  "original_manifest_sha256": "da5d7d6c26be034bb323ae1ab2ec529e8b5d28382c0330cd9e0dd1710c752588",
+  "split_reproduction": "Run ocon9000 freeze on the verified DOSE-I v2 raw archive. Split assignment is deterministic from archive member IDs and the documented seed."
+}

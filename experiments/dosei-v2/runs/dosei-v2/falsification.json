@@ -1,0 +1,49 @@
+{
+  "evaluation_split": "validation",
+  "seed": 9000,
+  "circular_shift": {
+    "metric": "average_precision_delta_combined_minus_context",
+    "observed": 0.0327794266478158,
+    "shifted_interval95": [
+      -0.03339674823751171,
+      0.00768374926178342
+    ],
+    "replicates": 1000,
+    "records_with_nonconstant_target": 33,
+    "empirical_fraction_at_least_observed": 0.0,
+    "scope": "descriptive null on the retained index sequence; unequal gaps and nonstationarity limit exchangeability"
+  },
+  "quality_only": {
+    "inputs": [
+      "WARN versus PASS",
+      "interpolated_at_most_5pct",
+      "large_sample_jump",
+      "line_power_50hz",
+      "line_power_60hz"
+    ],
+    "bootstrap_valid": 1000,
+    "models": {
+      "average_precision": {
+        "value": 0.2726048419360251,
+        "ci95": [
+          0.22715003873209755,
+          0.3289524563415423
+        ]
+      },
+      "auroc": {
+        "value": 0.48704834263430385,
+        "ci95": [
+          0.46675977465358903,
+          0.506075974939957
+        ]
+      },
+      "brier": {
+        "value": 0.20290152385105534,
+        "ci95": [
+          0.1820314536585863,
+          0.22781193321038234
+        ]
+      }
+    }
+  }
+}

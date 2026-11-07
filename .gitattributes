@@ -1,0 +1,5 @@
+experiments/dosei-v2/RESEARCH_PROTOCOL.md -text
+experiments/dosei-v2/requirements.txt -text
+experiments/dosei-v2/ocon9000/*.py -text
+experiments/dosei-v2/research/*.jsonl -text
+experiments/dosei-v2/runs/** -text

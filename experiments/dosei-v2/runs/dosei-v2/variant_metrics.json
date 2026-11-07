@@ -1,0 +1,78 @@
+{
+  "evaluation_split": "validation",
+  "added_eeg_features": [
+    "eeg_delta15_1_rel_alpha",
+    "eeg_delta15_1_rel_beta",
+    "eeg_delta15_1_rel_delta",
+    "eeg_delta15_1_rel_gamma",
+    "eeg_delta15_1_rel_theta",
+    "eeg_delta15_2_rel_alpha",
+    "eeg_delta15_2_rel_beta",
+    "eeg_delta15_2_rel_delta",
+    "eeg_delta15_2_rel_gamma",
+    "eeg_delta15_2_rel_theta"
+  ],
+  "models": {
+    "baseline": {
+      "average_precision": {
+        "value": 0.3595748151430024,
+        "ci95": [
+          0.3134604375781793,
+          0.41325803232773733
+        ]
+      },
+      "auroc": {
+        "value": 0.593129832582532,
+        "ci95": [
+          0.5292191195496195,
+          0.662802511448877
+        ]
+      },
+      "brier": {
+        "value": 0.1973915497257454,
+        "ci95": [
+          0.1731216914957293,
+          0.2272489325553499
+        ]
+      }
+    },
+    "variant": {
+      "average_precision": {
+        "value": 0.3650859285673661,
+        "ci95": [
+          0.3209351312261615,
+          0.41689150743236547
+        ]
+      },
+      "auroc": {
+        "value": 0.5971814697774491,
+        "ci95": [
+          0.533321558918426,
+          0.6663237500940373
+        ]
+      },
+      "brier": {
+        "value": 0.19675239926382926,
+        "ci95": [
+          0.17280487450373921,
+          0.22629631035566286
+        ]
+      }
+    }
+  },
+  "primary_comparison": {
+    "contrast": "variant minus baseline",
+    "metric": "average_precision",
+    "value": 0.005511113424363723,
+    "ci95": [
+      -0.0016612158302858919,
+      0.014066730453705068
+    ]
+  },
+  "bootstrap_valid": 1000,
+  "acceptance_rule": {
+    "minimum_delta_ap": 0.01,
+    "lower_ci95_strictly_above": 0.0
+  },
+  "accepted": false
+}

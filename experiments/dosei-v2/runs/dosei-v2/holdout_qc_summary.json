@@ -1,0 +1,17 @@
+{
+  "eligible": 2606,
+  "qc_FAIL": 1188,
+  "qc_WARN": 2080,
+  "no_observation_in_horizon": 526,
+  "right_censored": 136,
+  "annotated_transitions": 186,
+  "clinical_scores": 1151,
+  "parsed_records": 34,
+  "records_without_usable_signal": 0,
+  "failed_records": 1,
+  "records_attempted": 35,
+  "record_qc": {
+    "WARN": 34,
+    "FAIL": 1
+  }
+}

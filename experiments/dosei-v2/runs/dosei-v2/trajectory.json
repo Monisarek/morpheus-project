@@ -1,0 +1,90 @@
+{
+  "split": "validation",
+  "measure": "eeg_1_rel_alpha",
+  "all_annotated_events": {
+    "LOC": 114,
+    "ROC": 114
+  },
+  "observed": {
+    "LOC": {
+      "records": 30,
+      "events": 53,
+      "record_mean_delta": 0.018039657241109185,
+      "ci95": [
+        -0.0018722603795528956,
+        0.036108199779579075
+      ]
+    },
+    "ROC": {
+      "records": 23,
+      "events": 39,
+      "record_mean_delta": -0.038214263587137844,
+      "ci95": [
+        -0.07724356269824986,
+        -0.005892765815401901
+      ]
+    }
+  },
+  "shifted_control": {
+    "LOC": {
+      "records": 20,
+      "events": 40,
+      "record_mean_delta": 0.0017550081979150413,
+      "ci95": [
+        -0.014570229779003241,
+        0.0186907779394077
+      ]
+    },
+    "ROC": {
+      "records": 24,
+      "events": 48,
+      "record_mean_delta": 0.0053927694076256515,
+      "ci95": [
+        -0.008509972652349243,
+        0.020221475806940243
+      ]
+    }
+  },
+  "observed_by_bolus": {
+    "LOC": {
+      "with_intervening_bolus": {
+        "records": 6,
+        "events": 6,
+        "record_mean_delta": 0.001147677066534634,
+        "ci95": [
+          -0.023642340315173132,
+          0.02510459544611323
+        ]
+      },
+      "no_intervening_bolus": {
+        "records": 27,
+        "events": 47,
+        "record_mean_delta": 0.022208244574701066,
+        "ci95": [
+          -0.00012783184639935215,
+          0.04442023297887905
+        ]
+      }
+    },
+    "ROC": {
+      "with_intervening_bolus": {
+        "records": 14,
+        "events": 17,
+        "record_mean_delta": -0.03452483486866428,
+        "ci95": [
+          -0.06706938124816926,
+          0.0006741963188965907
+        ]
+      },
+      "no_intervening_bolus": {
+        "records": 17,
+        "events": 22,
+        "record_mean_delta": -0.04159081010411488,
+        "ci95": [
+          -0.09069280165221785,
+          -0.007110926226772158
+        ]
+      }
+    }
+  }
+}
