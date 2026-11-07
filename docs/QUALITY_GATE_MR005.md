@@ -1,6 +1,6 @@
 # MR-005 — Scientific and privacy quality gate: acceptance contract
 
-**Status:** SPEC_READY, **NOT IMPLEMENTED**, **NOT VALIDATED**. No agent execution, source data download, or scientific inference is authorized by this document.
+**Status (2026-11-08):** synthetic validation code from [PR #8](https://github.com/Monisarek/morpheus-project/pull/8) has been merged into `main`. The synthetic acceptance suite passed **57/57 tests** on Python 3.10/3.11/3.12; local Docker E23 was reported `PASS_SYNTHETIC_ONLY`. This document is the normative scientific contract, **not evidence of real-data authorization**. E25 independent scientific audit and permissioned end-to-end validation remain **OPEN**. No scientific inference or clinical-data run is authorized by this document alone.
 
 This policy is designed to prevent overstated scientific findings, unintended disclosure, temporal and group contamination, and silent data corruption.
 
