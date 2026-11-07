@@ -98,6 +98,19 @@
       "output": "boolean/count JSON, no hashes",
       "example": "py -m morpheus_tools run artifact.compare --left runs/replay-a --right runs/replay-b --cache-mode off",
       "risk": "read_only"
+    },
+    {
+      "id": "science.discovery",
+      "version": "1.0.0",
+      "description": "Bounded official publication and dataset metadata for pre-experiment evidence",
+      "triggers": ["discovery", "literature", "publications", "dataset", "doi"],
+      "module": "morpheus_tools.tools.discovery",
+      "operation": "discover",
+      "input_types": ["reviewed public topic"],
+      "output": "bounded evidence matrix",
+      "example": "py -m morpheus_tools run science.discovery --topic propofol-eeg",
+      "risk": "read_only",
+      "network": "public_metadata"
     }
   ]
 }

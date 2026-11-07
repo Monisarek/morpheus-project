@@ -9,6 +9,7 @@ from .cli import SafeArgumentParser
 from .execution_checks import check_execution
 from .paths import local_path
 from .science_checks import check_science
+from .tools.discovery import preflight
 
 
 MAX_MANIFEST_BYTES = 256 * 1024
@@ -133,10 +134,12 @@ def read_manifest(path: Path):
 
 def main(argv=None):
     parser = SafeArgumentParser(description=__doc__)
+    parser.add_argument("--preflight", action="store_true", help="Check a local Toolbox discovery report for research admission")
     parser.add_argument("manifest", type=Path)
     try:
         args = parser.parse_args(argv)
-        result = evaluate(read_manifest(args.manifest))
+        manifest = read_manifest(args.manifest)
+        result = preflight(manifest) if args.preflight else evaluate(manifest)
     except (OSError, ValueError, RecursionError):
         print('{"status":"ERROR","code":"invalid_or_unreadable_manifest"}')
         return 1
