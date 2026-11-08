@@ -1,0 +1,4 @@
+{"fixture": "iris", "hypothesis_id": "iris-sepal-gain", "kind": "protocol", "protocol": "iris-sepal-v1", "sha256": "6d1c49e1707d8e30281b8c8232e22556e706cd09d92a40fd73f54d2329eb6ebb", "version": 1}
+{"hypothesis_id": "iris-sepal-gain", "kind": "result", "sha256": "c835c069f6fd787021d2015953cc720275be0b7e98abfc28c2420675c00ff5be", "version": 1}
+{"evidence": "https://github.com/Monisarek/morpheus-project/pull/15", "hypothesis_id": "iris-sepal-gain", "kind": "review", "status": "LYRA_INTERNAL_REVIEW", "version": 1}
+{"fixture": "wine", "hypothesis_id": "wine-alcohol-color", "kind": "protocol", "protocol": "wine-color-v1", "sha256": "6c2182d5df3083a3f78b001884e20aeadb0f8b7791f3944498ec972a7535c0f2", "version": 1}
