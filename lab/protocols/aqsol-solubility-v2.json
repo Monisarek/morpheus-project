@@ -1,0 +1,97 @@
+{
+  "id": "aqsol-solubility-v2",
+  "scope": "public_nonclinical",
+  "hypothesis": "On unseen Bemis–Murcko scaffold groups within AqSolDB V1, the frozen structure-only model improves held-out MAE over the training-label median by at least 0.25 logS, with the lower bound of a 95% group bootstrap interval above zero.",
+  "authorization": "https://morpheusresea-9xx8372.slack.com/archives/C0CGMC7NRL0/p1794131795804069",
+  "source": {
+    "doi": "10.7910/DVN/OVHAW8",
+    "file_id": 3407241,
+    "file_doi": "doi:10.7910/DVN/OVHAW8/RLVXZU",
+    "version": "1.0",
+    "release": "2019-07-18T09:49:57Z",
+    "license": "CC0-1.0",
+    "original_bytes": 3750208,
+    "publisher_md5": "02f732e52de921b8adaf4ef03cf747bf",
+    "sha256": "7c47e021d03a5720f53cfddb7aef90c8911ea276a36306c839798733d8630332",
+    "unf": "UNF:6:eL5HcRPy9vQ2RFSITHPdqA==",
+    "url": "https://dataverse.harvard.edu/api/access/datafile/3407241?format=original"
+  },
+  "schema": {
+    "rows": 9982,
+    "columns": 26,
+    "inputs": [
+      "SMILES"
+    ],
+    "target": "Solubility",
+    "units": "log10(mol/L)"
+  },
+  "eligibility": {
+    "minimum_rows": 1500,
+    "minimum_groups": 100,
+    "method": "Reject invalid SMILES, multiple fragments, structures without rings, non-finite labels and potential stereochemistry marked unspecified or unknown. Exclude every occurrence of a repeated canonical isomeric identity. Preserve original CSV row order after exclusions."
+  },
+  "split": {
+    "method": "Single-pass whole-scaffold greedy assignment in SHA-256 byte order, with scaffold as the tie-break. Admit a group only when it strictly reduces distance from the row target and keeps holdout at or below the row cap.",
+    "seed": 20261109,
+    "hash_prefix": "MR022-V2|20261109|",
+    "row_target": "floor(0.20*N+0.5)",
+    "row_cap": "floor(0.25*N)",
+    "minimum_test_fraction": 0.15,
+    "maximum_test_fraction": 0.25,
+    "minimum_scaffolds_per_partition": 100
+  },
+  "features": [
+    "MolWt",
+    "MolLogP",
+    "TPSA",
+    "HDonors",
+    "HAcceptors",
+    "RotatableBonds",
+    "RingCount",
+    "HeavyAtomCount",
+    "FractionCSP3"
+  ],
+  "baseline": "Median of training logS",
+  "model": {
+    "name": "HistGradientBoostingRegressor",
+    "max_iter": 150,
+    "max_leaf_nodes": 15,
+    "learning_rate": 0.07,
+    "l2_regularization": 1,
+    "random_state": 20261109
+  },
+  "evaluation": {
+    "metric": "MAE in log10(mol/L)",
+    "delta": "baseline MAE minus candidate MAE",
+    "minimum_delta": 0.25,
+    "bootstrap": {
+      "repetitions": 2000,
+      "seed": 20261120,
+      "method": "Sort held-out groups, sample the same number of groups with replacement, retain all rows per sampled group, use a row-weighted paired MAE delta and the linear 2.5th/97.5th percentiles."
+    },
+    "controls": {
+      "seeds": [
+        20261110,
+        20261111,
+        20261112,
+        20261113,
+        20261114,
+        20261115,
+        20261116,
+        20261117,
+        20261118,
+        20261119
+      ],
+      "minimum_worse": 9,
+      "method": "NumPy default_rng(seed).permutation of training labels, identical candidate fit and held-out inputs, strict comparison on holdout MAE."
+    }
+  },
+  "execution": {
+    "image": "sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b",
+    "network": "none",
+    "cpu": 1,
+    "memory_mib": 768,
+    "dispatcher": "not applicable, MR-019 permits Iris only"
+  },
+  "limits": "Benchmark on the deposited heterogeneous measurements, within this release and frozen split."
+}

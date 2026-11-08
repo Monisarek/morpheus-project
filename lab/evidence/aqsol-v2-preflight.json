@@ -1,0 +1,82 @@
+{
+  "fit_authorized": false,
+  "fit_started": false,
+  "holdout_metrics_computed": false,
+  "id": "aqsol-solubility-v2",
+  "independent_decision_check": "PASS",
+  "negative_controls_run": false,
+  "population": {
+    "eligible_rows": 4779,
+    "excluded": {
+      "acyclic": 2348,
+      "invalid_smiles": 2,
+      "multiple_fragments": 1098,
+      "repeated_identity": 0,
+      "unresolved_stereochemistry": 1755
+    },
+    "ordered_population_sha256": "a817c5287032c20715e301a09b4dad646549b13a0b195dbaeb5b95f1d3fe43a5",
+    "scaffolds": 1186,
+    "v1_filter_reused": true
+  },
+  "protocol_sha256": "d882d46cf1ce48db3e37b27b3176a434700e96074e15b6ac14703d1065e8af85",
+  "runtime": {
+    "packages": {
+      "Pillow": "11.1.0",
+      "joblib": "1.4.2",
+      "numpy": "2.1.3",
+      "rdkit": "2024.9.6",
+      "scikit-learn": "1.5.2",
+      "scipy": "1.14.1",
+      "threadpoolctl": "3.5.0"
+    },
+    "python": "3.12.16"
+  },
+  "scope": "public_nonclinical",
+  "source": {
+    "doi": "10.7910/DVN/OVHAW8",
+    "file_id": 3407241,
+    "license": "CC0-1.0",
+    "original_bytes": 3750208,
+    "publisher_md5_verified": true,
+    "sha256": "7c47e021d03a5720f53cfddb7aef90c8911ea276a36306c839798733d8630332",
+    "version": "1.0"
+  },
+  "split": {
+    "cap_rows": 1194,
+    "holdout_fraction": 0.20004184975936387,
+    "holdout_rows": 956,
+    "holdout_scaffolds": 364,
+    "identity_overlap": 0,
+    "membership_sha256": "ea6a1b3f87a397fd8a88d95107b11919dc2a505ba8c1d1420ef48027abacf548",
+    "scaffold_overlap": 0,
+    "target_rows": 956,
+    "train_rows": 3823,
+    "train_scaffolds": 822
+  },
+  "split_inputs": [
+    "canonical_identity",
+    "scaffold"
+  ],
+  "status": "AWAITING_LYRA_GO_RUN",
+  "v1_protocol_sha256": "9cdb0640cc2ff897986c726b9f2a1c04603b79ede1f35a2a031820f0f372e6e5",
+  "freeze": {
+    "main_base": "cec4e05d2cf71027f7485fbd46cbb5af0c79084f",
+    "protocol_and_code_commit": "b87a760bef25c07aa319691a8f0859c174a8e9e7",
+    "committed_at": "2026-11-09T02:40:54+07:00",
+    "first_preflight_started_utc": "2026-11-08T19:41:36.1740187Z",
+    "cold_verification_completed_utc": "2026-11-08T19:43:06.2763763Z"
+  },
+  "reproducibility": {
+    "fresh_offline_containers": 2,
+    "identical_aggregate_manifests": true,
+    "algorithm_and_seed_unchanged": true,
+    "ordered_population_and_membership_hashes_match": true
+  },
+  "checks": {
+    "v1_protocol_filter_model_and_dependency_lock_unchanged": true,
+    "windows_synthetic_tests_passed": 4,
+    "original_md5_and_sha256_verified": true,
+    "source_license_verified_from_dataverse": true,
+    "positive_fit_admission": "AWAITING_LYRA_GO_RUN"
+  }
+}
