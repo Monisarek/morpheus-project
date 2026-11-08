@@ -111,6 +111,17 @@
       "example": "py -m morpheus_tools run science.discovery --topic propofol-eeg",
       "risk": "read_only",
       "network": "public_metadata"
+    },
+    {
+      "id": "science.registry",
+      "version": "1.0.0",
+      "description": "Search the public hypothesis ledger and verify protocol, source and result integrity",
+      "triggers": ["hypothesis", "registry", "experiment", "гипотеза"],
+      "module": "morpheus_tools.tools.research_registry",
+      "operation": "verify",
+      "example": "py -m morpheus_tools run science.registry --query iris",
+      "fresh": true,
+      "risk": "read_only"
     }
   ]
 }

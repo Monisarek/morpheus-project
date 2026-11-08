@@ -31,3 +31,29 @@ The Iris pilot uses only Python's standard library and the pinned public file. A
 Each stage uses the existing MR-006 checkpoint. The runner first freezes the split, then computes predictions, then checks held-out membership and evaluates the candidate, baseline and shuffled-label negative control. The [aggregate evidence](evidence/iris-sepal-v1.json) is reproduced in a fresh state by the tests. Finished results remain in the original experiment checkpoint. For a changed research protocol, give it a new version and keep prior files and checkpoints.
 
 The result applies to the fixed public split. `COMPLETED` records engineering execution, and `AWAITING_LYRA` records the outstanding scientific review. The pilot grants no clinical admission.
+
+## Registry and second public cycle
+
+```powershell
+py -m morpheus_tools run science.registry --query wine
+py lab/wine_pilot.py
+```
+
+The ledger `registry.jsonl` appends protocol, result and review as separate records. Protocol revisions use the same hypothesis ID and a new version. Result records retain negative outcomes. Add review evidence only after Lyra records her decision. The Toolbox checks protocol, fixture and result digests, and CI protects the previous ledger prefix and published research files. The Iris evidence remains unchanged.
+
+The second cycle uses the unmodified [UCI Wine dataset](https://doi.org/10.24432/C5PC7J) by Aeberhard and Forina (1992), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The protocol was frozen in `9a2e076`. The same command resumes from the existing MR-006 checkpoint. The [aggregate](evidence/wine-color-v1.json) awaits Lyra. Neither public pilot grants clinical admission.
+
+## Review transfer
+
+Create a local JSON plan with `pr`, `ci`, the exact PR `head` SHA and the original Slack `thread` timestamp. Verify the successful CI against that head in GitHub before preparing the plan. For each destination use the existing connector only after `SEND_ONCE`.
+
+```powershell
+py -m morpheus_tools.handoff .morpheus/plan.json drive reserve
+# Upload one safe review file to the verified private Drive folder and read back its permissions.
+py -m morpheus_tools.handoff .morpheus/plan.json drive record --link $verifiedDriveUrl
+py -m morpheus_tools.handoff .morpheus/plan.json slack reserve
+# Reply in the original task thread with the PR, CI, Drive link and handoff ID.
+py -m morpheus_tools.handoff .morpheus/plan.json slack record --link $verifiedThreadReplyUrl
+```
+
+`RECONCILE` means a previous reservation has an unknown outcome. Look up the original Drive file or Slack reply and record its verified link. Do not send again. A recorded destination returns `ALREADY_RECORDED`, including after a CI rerun on the same PR head. Keep the ignored local journal intact. This uses the existing authenticated connectors and changes no task status by itself.

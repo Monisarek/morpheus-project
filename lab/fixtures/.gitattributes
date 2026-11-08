@@ -1,1 +1,2 @@
 iris.csv -text -diff
+wine.csv -text -diff
