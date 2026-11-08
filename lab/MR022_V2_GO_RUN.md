@@ -12,3 +12,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File lab/aqsol_v2_go.ps1 -Phase R
 The wrapper writes a durable launch intent once. It keeps one MR-006 checkpoint under the workspace's `.morpheus/mr022-v2-go-run/checkpoint`. The isolated worker has no network or credentials and mounts the source, code and dependencies read-only. Only the dedicated checkpoint is writable.
 
 An uncertain launch or missing checkpoint requires reconciliation. With the prior container gone and its intact checkpoint located, the same command with `-Phase Resume` can reuse it. A completed fit is never repeated. MR-006 treats an interrupted fit as nonretryable. A completed checkpoint returns its verified aggregate without recalculation. Keep row-level predictions and SQLite local.
+
+## Result awaiting scientific review
+
+The single authorized run completed on the frozen V2 holdout. Baseline MAE was 2.037568 logS and candidate MAE was 0.832027 logS. The improvement of 1.205541 logS had a 95% scaffold bootstrap interval of 0.695703–1.816884. All ten training-label permutation controls had worse MAE. The preregistered verdict is `SUPPORTED_ON_FIXED_SPLIT`. The unchanged checkpoint returned the same aggregate with `reused=true`. [Full aggregate and chronology](evidence/aqsol-solubility-v2.json)

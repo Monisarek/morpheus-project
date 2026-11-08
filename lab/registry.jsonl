@@ -6,3 +6,4 @@
 {"evidence":"https://github.com/Monisarek/morpheus-project/pull/16","hypothesis_id":"wine-alcohol-color","kind":"review","status":"LYRA_INTERNAL_REVIEW","version":1}
 {"hypothesis_id": "aqsol-logs-scaffold", "kind": "protocol", "protocol": "aqsol-solubility-v1", "sha256": "9cdb0640cc2ff897986c726b9f2a1c04603b79ede1f35a2a031820f0f372e6e5", "version": 1}
 {"hypothesis_id": "aqsol-logs-scaffold", "kind": "protocol", "protocol": "aqsol-solubility-v2", "sha256": "d882d46cf1ce48db3e37b27b3176a434700e96074e15b6ac14703d1065e8af85", "version": 2}
+{"hypothesis_id": "aqsol-logs-scaffold", "kind": "result", "sha256": "2e8ec7820f10fe4f775a83fb1158eaa226bb6032b249d31cc688f5d5427d5c1d", "version": 2}
