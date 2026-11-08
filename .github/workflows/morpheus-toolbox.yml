@@ -5,6 +5,7 @@ on:
     paths:
       - "morpheus_tools/**"
       - "tests/test_morpheus*.py"
+      - "lab/**"
       - ".github/workflows/morpheus-toolbox.yml"
       - "AGENTS.md"
       - ".agents/skills/morpheus-toolbox/SKILL.md"
@@ -36,3 +37,5 @@ jobs:
         run: python -m morpheus_tools validate
       - name: Run deterministic toolbox tests
         run: python -m unittest discover -s tests -p 'test_morpheus*.py' -v
+      - name: Run offline recovery fault tests
+        run: python -m unittest discover -s lab -v
