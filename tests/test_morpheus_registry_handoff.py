@@ -13,7 +13,7 @@ class RegistryTests(unittest.TestCase):
         entries = {x["hypothesis_id"]: x for x in registry.inventory()}
         self.assertEqual(entries["iris-sepal-gain"]["result"], "NOT_SUPPORTED_ON_FIXED_SPLIT")
         self.assertEqual(entries["iris-sepal-gain"]["review"], "LYRA_INTERNAL_REVIEW")
-        self.assertEqual(entries["wine-alcohol-color"]["review"], "AWAITING_LYRA")
+        self.assertEqual(entries["wine-alcohol-color"]["review"], "LYRA_INTERNAL_REVIEW")
         self.assertIsNotNone(entries["wine-alcohol-color"]["result"])
 
     def test_old_evidence_and_duplicate_version_cannot_be_replaced(self):
