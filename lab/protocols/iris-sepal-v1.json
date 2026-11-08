@@ -1,0 +1,24 @@
+{
+  "id": "iris-sepal-v1",
+  "scope": "public_nonclinical",
+  "hypothesis": "A nearest-centroid classifier using sepal width alone improves test accuracy by at least 0.10 over the same classifier using petal length alone.",
+  "target": "Iris species",
+  "unit": "one dataset row; independence across rows is not established",
+  "source": {
+    "citation": "Fisher, R. (1936). Iris [Dataset]. UCI Machine Learning Repository.",
+    "doi": "10.24432/C56C76",
+    "url": "https://archive.ics.uci.edu/ml/machine-learning-databases/iris/bezdekIris.data",
+    "license": "CC-BY-4.0",
+    "sha256": "0fed2a99db77ec533a62dc66894d3ec6df3b58b6a8f3cf4a6b47e4086b7f97dc",
+    "transformation": "unmodified source bytes"
+  },
+  "split": {
+    "seed": 404,
+    "test_per_species": 10,
+    "method": "For each species, order by SHA-256 of seed:zero-based CSV row index. First ten are test. Fit all centroids on the remaining rows only."
+  },
+  "predictors": {"candidate": "sepal_width", "baseline": "petal_length"},
+  "negative_control": {"seed": 405, "max_accuracy": 0.6, "method": "Shuffle training labels for the sepal-width classifier only."},
+  "criterion": {"min_gain": 0.1, "max_pvalue": 0.05, "method": "Paired one-sided exact binomial test on discordant test predictions. The p-value is descriptive conditional on this split."},
+  "review": "Lyra; internal engineering and scientific review required before DONE"
+}
