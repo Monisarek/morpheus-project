@@ -1,0 +1,44 @@
+{
+  "id": "aqsol-solubility-v1",
+  "scope": "public_nonclinical",
+  "status": "BLOCKED",
+  "gate": "aqsol_frozen_split_gate_failed",
+  "preregistered_protocol_commit": "47d7334cc7b8b711f0ecce2aded8d0af8966e7c2",
+  "preflight_code_commit": "c5433cb11594e39e5e0a91cc5710017d8c81cf1d",
+  "source": {
+    "doi": "10.7910/DVN/OVHAW8",
+    "version": "1.0",
+    "file_id": 3407241,
+    "license": "CC0-1.0",
+    "original_bytes": 3750208,
+    "sha256": "7c47e021d03a5720f53cfddb7aef90c8911ea276a36306c839798733d8630332",
+    "publisher_md5_verified": true,
+    "rows": 9982,
+    "columns": 26
+  },
+  "population": {
+    "eligible_rows": 4779,
+    "unique_scaffolds": 1186,
+    "minimum_rows": 1500,
+    "minimum_scaffolds": 100
+  },
+  "split": {
+    "seed": 20261109,
+    "train_rows": 2684,
+    "holdout_rows": 2095,
+    "holdout_fraction": 0.4383762293366813,
+    "allowed_range": [
+      0.15,
+      0.25
+    ]
+  },
+  "checks": {
+    "mr005_synthetic_passed": 7,
+    "aqsol_synthetic_passed": 6,
+    "public_trial_admission": "BLOCKED",
+    "fit_started": false,
+    "heldout_metrics_computed": false,
+    "checkpoint_created": false
+  },
+  "review": "AWAITING_LYRA"
+}

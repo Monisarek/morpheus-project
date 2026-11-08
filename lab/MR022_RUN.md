@@ -21,3 +21,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File lab/aqsol_docker.ps1 -Phase 
 `prepare` computes source and membership facts without fitting a model. For a new authorized run, commit the emitted aggregate freeze and pass the separate MR-005 checks before `run`. The existing MR-005 synthetic tests establish engineering coverage. The source-specific preflight and Lyra's scoped conditional authorization govern this public trial. The clinical gate and Iris-only Dispatcher retain their existing scope.
 
 `run` requires the committed freeze and admission record, verifies the source, environment and prepared partition again, then uses the existing MR-006 stages. Repeating it against the same local checkpoint reuses verified results. A fresh `prepare` requires a fresh private state directory. Keep the same seed and protocol when verifying reproduction.
+
+## V1 preflight outcome
+
+The fixed split was rejected before fitting. It allocated 2,095 of 4,779 eligible rows (43.84%) to holdout, above the prespecified 25% ceiling. The cohort met its minimums with 1,186 scaffolds. The existing MR-005 synthetic checks passed. Admission for the actual V1 split remains blocked. No model, negative-control fits or held-out metrics were produced. A change to the split procedure requires a new reviewed protocol version. [Preflight evidence](evidence/aqsol-v1-preflight-blocked.json)
