@@ -46,3 +46,15 @@ jobs:
         env:
           RESEARCH_BASE: ${{ github.event.pull_request.base.sha }}
         run: python lab/check_registry_history.py "$RESEARCH_BASE"
+
+  dispatcher-docker:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Exercise the public Iris checkpoint in a restricted Docker container
+        shell: bash
+        run: |
+          docker pull docker.io/library/python:3.12-slim
+          export MORPHEUS_DOCKER_TEST_IMAGE="$(docker image inspect docker.io/library/python:3.12-slim --format '{{.Id}}')"
+          python3 -B -m unittest discover -s lab -p test_dispatcher_pilot.py -v
