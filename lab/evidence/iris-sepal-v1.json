@@ -1,0 +1,26 @@
+{
+  "accuracy_gain": -0.3333333333333333,
+  "baseline_only_correct": 12,
+  "candidate_only_correct": 2,
+  "correct": {
+    "baseline": 26,
+    "candidate": 16,
+    "negative_control": 11
+  },
+  "id": "iris-sepal-v1",
+  "negative_control_ok": true,
+  "paired_pvalue": 0.99908447265625,
+  "result": "NOT_SUPPORTED_ON_FIXED_SPLIT",
+  "scientific_review": "AWAITING_LYRA",
+  "scope": "public_nonclinical",
+  "source": {
+    "citation": "Fisher, R. (1936). Iris [Dataset]. UCI Machine Learning Repository.",
+    "doi": "10.24432/C56C76",
+    "license": "CC-BY-4.0",
+    "sha256": "0fed2a99db77ec533a62dc66894d3ec6df3b58b6a8f3cf4a6b47e4086b7f97dc",
+    "transformation": "unmodified source bytes",
+    "url": "https://archive.ics.uci.edu/ml/machine-learning-databases/iris/bezdekIris.data"
+  },
+  "test_rows": 30,
+  "train_rows": 120
+}

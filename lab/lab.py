@@ -15,6 +15,8 @@ import stat
 import sys
 import time
 
+import iris_pilot
+
 @dataclass(frozen=True)
 class Protocol:
     task: str = "synthetic-control"
@@ -287,24 +289,59 @@ class SafeParser(argparse.ArgumentParser):
         self.exit(2, "Invalid command or task. Use --help.\n")
 
 
+def run_pilot(directory):
+    try:
+        protocol, rows = iris_pilot.inputs()
+    except (OSError, KeyError, TypeError, ValueError):
+        raise CheckpointError("public_pilot_inputs_unverified") from None
+    packet = {
+        "protocol": protocol, "python": sys.version.split()[0],
+        "runner_sha256": sha256(Path(__file__).read_bytes()).hexdigest(),
+        "pilot_sha256": sha256(Path(iris_pilot.__file__).read_bytes()).hexdigest(),
+    }
+    stages = (
+        Stage("frozen_protocol_and_split", lambda _: iris_pilot.split(protocol, rows)),
+        Stage("execute", lambda partition: iris_pilot.experiment(protocol, rows, partition)),
+        Stage("verify_and_summarize", lambda predictions: iris_pilot.review(protocol, rows, predictions)),
+    )
+    guard(directory.parent)
+    directory.parent.mkdir(exist_ok=True)
+    result = run(directory, packet=packet, stages=stages)
+    if result.get("next_command"):
+        result["next_command"] = RESUME.replace(PROTOCOL.task, iris_pilot.TASK)
+    return result
+
+
 def main():
     parser = SafeParser(description=__doc__, allow_abbrev=False)
     commands = parser.add_subparsers(dest="command", required=True)
-    for command in ("doctor", "status", "run", "resume"):
+    for command in ("doctor", "status", "protocol", "run", "resume"):
         sub = commands.add_parser(command, allow_abbrev=False)
         if command in ("run", "resume"):
-            sub.add_argument("--task", choices=[PROTOCOL.task], required=True)
+            sub.add_argument("--task", choices=[PROTOCOL.task, iris_pilot.TASK], required=True)
+        elif command == "status":
+            sub.add_argument("--task", choices=[PROTOCOL.task, iris_pilot.TASK], default=PROTOCOL.task)
+        elif command == "protocol":
+            sub.add_argument("--task", choices=[iris_pilot.TASK], required=True)
         if command == "resume":
             sub.add_argument("--retry-quota", action="store_true")
     args = parser.parse_args()
     if args.command == "doctor":
         result = {"python": sys.version.split()[0], "scipy": version("scipy"), "sqlite": sqlite3.sqlite_version,
-                  "dvc_on_path": shutil.which("dvc") is not None, "scope": "SYNTHETIC_ONLY", "lab_ready": False}
+                  "dvc_on_path": shutil.which("dvc") is not None, "scope": "SYNTHETIC_ONLY",
+                  "public_nonclinical_pilot": iris_pilot.TASK, "lab_ready": False}
     else:
         try:
-            result = status(STATE) if args.command == "status" else run(
-                STATE, retry_quota=getattr(args, "retry_quota", False)
-            )
+            is_pilot = args.task == iris_pilot.TASK
+            directory = STATE / iris_pilot.TASK if is_pilot else STATE
+            if args.command == "protocol":
+                result = iris_pilot.read_protocol()
+            elif args.command == "status":
+                result = status(directory)
+            elif is_pilot:
+                result = run_pilot(directory)
+            else:
+                result = run(STATE, retry_quota=getattr(args, "retry_quota", False))
         except CheckpointError as exc:
             print(json.dumps({"status": "BLOCKED", "reason": str(exc)}))
             return 2
