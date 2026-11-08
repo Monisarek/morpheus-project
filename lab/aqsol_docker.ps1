@@ -13,11 +13,14 @@ $limits = @('run', '--rm', '--pull=never', '--network=none', '--read-only', '--u
     '--cpus=1', '--pids-limit=48', '--ipc=private', '--shm-size=4m', '--ulimit', 'cpu=240:250',
     '--tmpfs', '/tmp:rw,noexec,nosuid,size=64m,mode=1777', '--workdir', '/tmp',
     '--env', 'OMP_NUM_THREADS=1', '--env', 'OPENBLAS_NUM_THREADS=1', '--env', 'MKL_NUM_THREADS=1')
-$deps = Join-Path $local 'deps'
-New-Item -ItemType Directory -Path $deps -Force | Out-Null
+$deps = 'morpheus-mr022-aqsol-deps-v1'
 if ($Phase -eq 'setup') {
+    & $docker @engine volume create --label 'morpheus.scope=mr022-dependencies' $deps | Out-Null
+    if ($LASTEXITCODE) { exit $LASTEXITCODE }
+    & $docker @engine run --rm --pull=never --network=none --read-only --user 0:0 --cap-drop=ALL --cap-add=CHOWN --security-opt=no-new-privileges --memory=128m --cpus=0.25 --pids-limit=16 --mount "type=volume,source=$deps,target=/deps" $image python -B -c 'import os; os.chown("/deps", 65534, 65534)'
+    if ($LASTEXITCODE) { exit $LASTEXITCODE }
     Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'aqsol-linux-amd64.lock') -Destination (Join-Path $local 'wheels/lock.txt')
-    & $docker @engine @limits --mount "type=bind,source=$local\wheels,target=/wheels,readonly" --mount "type=bind,source=$deps,target=/deps" --env TMPDIR=/deps $image python -B -m pip --isolated --disable-pip-version-check install --no-index --no-deps --no-cache-dir --require-hashes --find-links=/wheels --target=/deps -r /wheels/lock.txt
+    & $docker @engine @limits --mount "type=bind,source=$local\wheels,target=/wheels,readonly" --mount "type=volume,source=$deps,target=/deps" --env TMPDIR=/deps $image python -B -m pip --isolated --disable-pip-version-check install --no-index --no-deps --no-cache-dir --require-hashes --find-links=/wheels --target=/deps -r /wheels/lock.txt
     exit $LASTEXITCODE
 }
 $files = @('lab.py','iris_pilot.py','aqsol_pilot.py','aqsol_model.py','aqsol-requirements.txt',
@@ -38,7 +41,7 @@ foreach ($file in $files) {
     Copy-Item -LiteralPath (Join-Path $PSScriptRoot $file) -Destination $target
 }
 $mounts = @('--mount', "type=bind,source=$bundle,target=/pilot,readonly",
-    '--mount', "type=bind,source=$deps,target=/deps,readonly", '--env', 'PYTHONPATH=/deps')
+    '--mount', "type=volume,source=$deps,target=/deps,readonly", '--env', 'PYTHONPATH=/deps')
 if ($Phase -eq 'test') {
     & $docker @engine @limits @mounts $image python -B -m unittest discover -s /pilot -p 'test_aqsol*.py' -v
     exit $LASTEXITCODE
