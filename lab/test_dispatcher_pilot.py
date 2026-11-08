@@ -2,7 +2,7 @@ import json
 import os
 from pathlib import Path
 import sqlite3
-from tempfile import TemporaryDirectory
+from tempfile import TemporaryDirectory, mkdtemp
 from threading import Event, Thread
 import unittest
 
@@ -13,13 +13,18 @@ from prepare_dispatcher_pilot import prepare
 
 class DispatcherPilotTests(unittest.TestCase):
     def setUp(self):
-        temp = TemporaryDirectory(ignore_cleanup_errors=True)
-        self.addCleanup(temp.cleanup)
-        self.root = Path(temp.name) / "pilot"
         self.image = os.environ.get("MORPHEUS_DOCKER_TEST_IMAGE")
+        if self.image and os.name != "nt":
+            # The ephemeral CI runner owns cleanup of the non-root container's checkpoint.
+            directory = mkdtemp(prefix="morpheus-docker-test-")
+        else:
+            temp = TemporaryDirectory()
+            self.addCleanup(temp.cleanup)
+            directory = temp.name
+        self.root = Path(directory) / "pilot"
         prepare(self.root, self.image or ("sha256:" + "a" * 64))
         self.source = self.root / "public"
-        self.db = Path(temp.name) / "dispatch_queue.sqlite3"
+        self.db = Path(directory) / "dispatch_queue.sqlite3"
         self.calls = []
         self.replies = []
         self.task = {"ID": pilot.TASK, "record_id": pilot.RECORD, "Статус": "IN_PROGRESS"}
