@@ -126,7 +126,7 @@ def docker(root, source, image, resume):
 def dispatch(db_path, root, source, action, timestamp, tasks, executor=docker):
     eligible = [task for task in tasks if task.get("ID") == TASK]
     if (len(eligible) != 1 or eligible[0].get("record_id") != RECORD
-            or eligible[0].get("Статус") != "IN_PROGRESS"):
+            or str(eligible[0].get("Статус", "")).strip().upper() != "IN_PROGRESS"):
         raise Denied("slack_task_not_eligible")
     packet = approval(root, source)
     fingerprint = sha256(json.dumps(packet, sort_keys=True).encode()).hexdigest()

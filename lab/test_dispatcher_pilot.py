@@ -27,7 +27,7 @@ class DispatcherPilotTests(unittest.TestCase):
         self.db = Path(directory) / "dispatch_queue.sqlite3"
         self.calls = []
         self.replies = []
-        self.task = {"ID": pilot.TASK, "record_id": pilot.RECORD, "Статус": "IN_PROGRESS"}
+        self.task = {"ID": pilot.TASK, "record_id": pilot.RECORD, "Статус": "in_progress"}
         self.result = json.loads((self.source / "evidence/iris-sepal-v1.json").read_bytes())
         with sqlite3.connect(self.db) as db:
             db.execute("CREATE TABLE dispatch_queue (task_id TEXT PRIMARY KEY, slack_record_id TEXT, state TEXT)")
