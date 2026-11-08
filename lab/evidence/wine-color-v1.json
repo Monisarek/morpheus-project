@@ -1,0 +1,24 @@
+{
+  "cultivar_sizes": [
+    59,
+    71,
+    48
+  ],
+  "id": "wine-color-v1",
+  "negative_control": 0.0557451098,
+  "negative_control_ok": true,
+  "permutation_pvalue": 0.001,
+  "permutations": 999,
+  "result": "NOT_SUPPORTED_IN_FIXED_DATASET",
+  "rows": 178,
+  "scientific_review": "AWAITING_LYRA",
+  "scope": "public_nonclinical",
+  "source": {
+    "citation": "Aeberhard, S. & Forina, M. (1992). Wine [Dataset]. UCI Machine Learning Repository.",
+    "doi": "10.24432/C5PC7J",
+    "license": "CC-BY-4.0",
+    "sha256": "6be6b1203f3d51df0b553a70e57b8a723cd405683958204f96d23d7cd6aea659",
+    "url": "https://archive.ics.uci.edu/ml/machine-learning-databases/wine/wine.data"
+  },
+  "within_cultivar_correlation": 0.3185025813
+}
