@@ -73,6 +73,15 @@ class DispatcherPilotTests(unittest.TestCase):
         self.assertIn("BLOCKED", self.replies[-1])
         self.assertEqual(self.calls, [])
 
+    def test_slack_connector_attribution_is_exact_and_terminal(self):
+        command = self.event()["text"]
+        for separator in (" ", "\n"):
+            event = self.event(text=command + separator + "*Sent using* <@U0CFURPM5PB>")
+            self.assertEqual(pilot.authorize(event, "owner", "ops"), "run")
+        for suffix in (" *Sent using* <@UOTHER>", " && echo rejected *Sent using* <@U0CFURPM5PB>",
+                       " *Sent using* <@U0CFURPM5PB> trailing"):
+            self.assertIsNone(pilot.authorize(self.event(text=command + suffix), "owner", "ops"))
+
     def test_unknown_then_explicit_resume_and_replayed_events(self):
         def lost_response(*args):
             self.calls.append(False)

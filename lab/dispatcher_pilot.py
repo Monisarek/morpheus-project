@@ -18,7 +18,7 @@ THREAD = "1794065078.911019"
 FILES = ("lab.py", "iris_pilot.py", "dispatch_worker.py", "fixtures/iris.csv",
          "protocols/iris-sepal-v1.json", "evidence/iris-sepal-v1.json")
 COMMAND = re.compile(r"<@U0CFBPD8KV5(?:\|[^>\r\n]+)?> (run|resume) MR-019 iris-sepal-v1")
-FOOTER = re.compile(r"\*Sent using\* <@[A-Z0-9]+(?:\|[^>\r\n]+)?>")
+FOOTER = re.compile(r"\s+\*Sent using\* <@U0CFURPM5PB(?:\|ChatGPT)?>\Z")
 TS = re.compile(r"[0-9]{10}\.[0-9]{6}")
 IMAGE = re.compile(r"sha256:[0-9a-f]{64}")
 CONTAINER = "morpheus-mr019-iris-sepal-v1"
@@ -36,10 +36,7 @@ def authorize(event, owner, channel):
             or not TS.fullmatch(str(event.get("ts", "")))
             or not isinstance(raw, str) or len(raw) > 512):
         return None
-    lines = raw.strip().splitlines()
-    if not lines or len(lines) > 2 or (len(lines) == 2 and not FOOTER.fullmatch(lines[1])):
-        return None
-    matched = COMMAND.fullmatch(lines[0])
+    matched = COMMAND.fullmatch(FOOTER.sub("", raw.strip()))
     return matched[1] if matched else None
 
 
