@@ -1,0 +1,102 @@
+{
+  "id": "aqsol-solubility-v2",
+  "scope": "public_nonclinical",
+  "result": "SUPPORTED_ON_FIXED_SPLIT",
+  "scientific_review": "AWAITING_LYRA",
+  "metrics": {
+    "baseline_mae": 2.037568097347071,
+    "candidate_mae": 0.832027100754207,
+    "ci_95": [
+      0.6957027762391864,
+      1.8168842297127135
+    ],
+    "control_maes": [
+      2.028491559767352,
+      2.0073449747149166,
+      1.9852342115905128,
+      1.9343532511040935,
+      2.0413443233516646,
+      2.0335099070784106,
+      1.9687601935946548,
+      1.9945029177837141,
+      2.045831134387974,
+      1.9806699195751294
+    ],
+    "controls_worse": 10,
+    "delta_mae": 1.205540996592864,
+    "status": "SUPPORTED_ON_FIXED_SPLIT",
+    "test_groups": 364,
+    "test_rows": 956
+  },
+  "control_seeds": [
+    20261110,
+    20261111,
+    20261112,
+    20261113,
+    20261114,
+    20261115,
+    20261116,
+    20261117,
+    20261118,
+    20261119
+  ],
+  "bootstrap": {
+    "resamples": 2000,
+    "seed": 20261120,
+    "unit": "Bemis–Murcko scaffold",
+    "confidence": 0.95
+  },
+  "criterion": {
+    "minimum_delta_mae": 0.25,
+    "minimum_controls_worse": 9,
+    "ci_lower_strictly_positive": true
+  },
+  "split": {
+    "train_rows": 3823,
+    "train_scaffolds": 822,
+    "holdout_rows": 956,
+    "holdout_scaffolds": 364,
+    "identity_overlap": 0,
+    "scaffold_overlap": 0
+  },
+  "source": {
+    "doi": "10.7910/DVN/OVHAW8",
+    "file_id": 3407241,
+    "version": "1.0",
+    "license": "CC0-1.0",
+    "publisher_md5_and_sha256_verified": true
+  },
+  "provenance": {
+    "authorization": "https://morpheusresea-9xx8372.slack.com/archives/C0CGMC7NRL0/p1794167395390289",
+    "reviewed_main": "5024da581fa27fcb5793b676a004d5d9c1f77172",
+    "protocol_freeze": "b87a760bef25c07aa319691a8f0859c174a8e9e7",
+    "preflight_commit": "b77767c7a63fcd60c6aa5f7c5403c937854b68c3",
+    "execution_freeze": "a386448ba73f021478a51c828a228b8cba1818f9",
+    "execution_freeze_time": "2026-11-09T02:59:34+07:00",
+    "offline_synthetic_passed_utc": "2026-11-08T20:00:47.5028787Z",
+    "launch_intent_utc": "2026-11-08T20:00:57.8029279Z",
+    "verified_primary_saved_utc": "2026-11-08T20:01:23.9156702Z"
+  },
+  "checks": {
+    "offline_synthetic_tests_passed": 14,
+    "windows_executor_tests_passed": 4,
+    "exact_preflight_membership_reverified": true,
+    "network": "none",
+    "nonroot_uid": 65534,
+    "resource_limits": {
+      "cpu": 1,
+      "memory_mib": 768
+    },
+    "all_maes_independently_recomputed_from_saved_predictions": true,
+    "completed_checkpoint_stages": [
+      "verify_v2_membership",
+      "fit_and_predict_v2_once",
+      "verify_heldout_v2_aggregate"
+    ],
+    "checkpoint_unchanged_on_resume": true,
+    "resume_reused_verified_result": true,
+    "real_fit_cycles": 1,
+    "independent_cold_refit_performed": false
+  },
+  "interpretation": "The frozen candidate met the prespecified rule on this within-release scaffold holdout of heterogeneous deposited measurements. This does not establish external laboratory validity."
+}
