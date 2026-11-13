@@ -1,0 +1,338 @@
+{
+  "status": "REPLICATION",
+  "independent_confirmation": false,
+  "group_unit": "recording",
+  "group_counts": {
+    "train": 102,
+    "validation": 34,
+    "holdout": 35
+  },
+  "provenance_checks": {
+    "raw_and_metadata_match_published_md5": true,
+    "archive_matches_original_manifest": true,
+    "original_manifest_matches_published_fingerprint": true,
+    "published_group_counts_match": true,
+    "original_public_artifacts_match": true,
+    "original_release_matches_candidate": true,
+    "original_development_matches_candidate": true,
+    "frozen_source_matches": true,
+    "replay_manifest_matches_except_timestamp": true,
+    "original_run_unchanged": true
+  },
+  "byte_matches": {
+    "features.csv": true,
+    "events.csv": true,
+    "condition_profiles.json": true,
+    "qc_summary.json": true,
+    "metrics.json": true,
+    "holdout_features.csv": true,
+    "holdout_events.csv": true,
+    "holdout_condition_profiles.json": true,
+    "holdout_qc_summary.json": true,
+    "holdout_metrics.json": true,
+    "falsification.json": true,
+    "trajectory.json": true,
+    "exploratory_candidates.json": true,
+    "variant_features.csv": true,
+    "variant_metrics.json": true,
+    "average_precision.svg": true
+  },
+  "aggregate_values_match": {
+    "metrics.json": true,
+    "holdout_metrics.json": true,
+    "qc_summary.json": true,
+    "holdout_qc_summary.json": true,
+    "falsification.json": true,
+    "trajectory.json": true,
+    "variant_metrics.json": true
+  },
+  "matched": true,
+  "development_qc": {
+    "no_observation_in_horizon": 1824,
+    "qc_FAIL": 5320,
+    "eligible": 12684,
+    "qc_WARN": 9728,
+    "right_censored": 540,
+    "annotated_transitions": 926,
+    "clinical_scores": 6102,
+    "parsed_records": 135,
+    "records_without_usable_signal": 0,
+    "failed_records": 1,
+    "records_attempted": 136,
+    "record_qc": {
+      "WARN": 135,
+      "FAIL": 1
+    }
+  },
+  "former_holdout_qc": {
+    "eligible": 2606,
+    "qc_FAIL": 1188,
+    "qc_WARN": 2080,
+    "no_observation_in_horizon": 526,
+    "right_censored": 136,
+    "annotated_transitions": 186,
+    "clinical_scores": 1151,
+    "parsed_records": 34,
+    "records_without_usable_signal": 0,
+    "failed_records": 1,
+    "records_attempted": 35,
+    "record_qc": {
+      "WARN": 34,
+      "FAIL": 1
+    }
+  },
+  "development": {
+    "cohort": {
+      "train": {
+        "records_total": 102,
+        "records_included": 101,
+        "windows_total": 11644,
+        "windows_included": 6353,
+        "windows_excluded": 5291,
+        "positive_windows_included": 1624,
+        "qc_by_target": {
+          "0": {
+            "WARN": 4729,
+            "FAIL": 2483
+          },
+          "1": {
+            "FAIL": 898,
+            "WARN": 1624
+          },
+          "unobserved": {
+            "FAIL": 756,
+            "WARN": 1154
+          }
+        }
+      },
+      "validation": {
+        "records_total": 33,
+        "records_included": 33,
+        "windows_total": 3404,
+        "windows_included": 1925,
+        "windows_excluded": 1479,
+        "positive_windows_included": 535,
+        "qc_by_target": {
+          "0": {
+            "FAIL": 733,
+            "WARN": 1390
+          },
+          "1": {
+            "WARN": 535,
+            "FAIL": 292
+          },
+          "unobserved": {
+            "FAIL": 158,
+            "WARN": 296
+          }
+        }
+      }
+    },
+    "primary_comparison": {
+      "contrast": "eeg_context_logistic minus context_logistic",
+      "metric": "average_precision",
+      "value": 0.0327794266478158,
+      "ci95": [
+        -0.012885560946190361,
+        0.08619897592434507
+      ]
+    }
+  },
+  "former_holdout": {
+    "cohort": {
+      "train_and_validation": {
+        "records_total": 135,
+        "records_included": 134,
+        "windows_total": 15048,
+        "windows_included": 8278,
+        "windows_excluded": 6770,
+        "positive_windows_included": 2159,
+        "qc_by_target": {
+          "0": {
+            "WARN": 6119,
+            "FAIL": 3216
+          },
+          "1": {
+            "FAIL": 1190,
+            "WARN": 2159
+          },
+          "unobserved": {
+            "FAIL": 914,
+            "WARN": 1450
+          }
+        }
+      },
+      "holdout": {
+        "records_total": 34,
+        "records_included": 34,
+        "windows_total": 3268,
+        "windows_included": 1684,
+        "windows_excluded": 1584,
+        "positive_windows_included": 399,
+        "qc_by_target": {
+          "0": {
+            "FAIL": 642,
+            "WARN": 1285
+          },
+          "1": {
+            "FAIL": 280,
+            "WARN": 399
+          },
+          "unobserved": {
+            "WARN": 396,
+            "FAIL": 266
+          }
+        }
+      }
+    },
+    "models": {
+      "train_prevalence": {
+        "average_precision": {
+          "value": 0.23693586698337293,
+          "ci95": [
+            0.19276673822013274,
+            0.29089046220381015
+          ]
+        },
+        "auroc": {
+          "value": 0.5,
+          "ci95": [
+            0.5,
+            0.5
+          ]
+        },
+        "brier": {
+          "value": 0.18136732163383526,
+          "ci95": [
+            0.16023785196695547,
+            0.20717792770691223
+          ]
+        }
+      },
+      "context_logistic": {
+        "average_precision": {
+          "value": 0.28271823350276803,
+          "ci95": [
+            0.22630868439168095,
+            0.347059589808761
+          ]
+        },
+        "auroc": {
+          "value": 0.520219810225954,
+          "ci95": [
+            0.45172669939662474,
+            0.581870659949132
+          ]
+        },
+        "brier": {
+          "value": 0.1807478247626249,
+          "ci95": [
+            0.16006179382988012,
+            0.20749869718871333
+          ]
+        }
+      },
+      "single_band_logistic": {
+        "average_precision": {
+          "value": 0.24615504538295474,
+          "ci95": [
+            0.19339062687839415,
+            0.3161024457975641
+          ]
+        },
+        "auroc": {
+          "value": 0.5439727723979209,
+          "ci95": [
+            0.4677506145962496,
+            0.6132908726563453
+          ]
+        },
+        "brier": {
+          "value": 0.18135794999567995,
+          "ci95": [
+            0.1602263241824347,
+            0.2071592203717487
+          ]
+        }
+      },
+      "eeg_logistic": {
+        "average_precision": {
+          "value": 0.3597561828590866,
+          "ci95": [
+            0.2916576426813969,
+            0.44461996868919834
+          ]
+        },
+        "auroc": {
+          "value": 0.6734774679890387,
+          "ci95": [
+            0.6108862049285537,
+            0.7239948092378214
+          ]
+        },
+        "brier": {
+          "value": 0.1711505628125733,
+          "ci95": [
+            0.14875561737466794,
+            0.19752039360978518
+          ]
+        }
+      },
+      "eeg_context_logistic": {
+        "average_precision": {
+          "value": 0.36024552044511615,
+          "ci95": [
+            0.3029108311290392,
+            0.4250353738874081
+          ]
+        },
+        "auroc": {
+          "value": 0.6678739650683126,
+          "ci95": [
+            0.6046288349890784,
+            0.7185558672126449
+          ]
+        },
+        "brier": {
+          "value": 0.17151044498896012,
+          "ci95": [
+            0.1492772532049599,
+            0.19844933123110256
+          ]
+        }
+      },
+      "eeg_random_forest": {
+        "average_precision": {
+          "value": 0.33500642573813466,
+          "ci95": [
+            0.26836260163602466,
+            0.408271218084078
+          ]
+        },
+        "auroc": {
+          "value": 0.6531932945203476,
+          "ci95": [
+            0.5912544891520591,
+            0.7095580495974383
+          ]
+        },
+        "brier": {
+          "value": 0.17275633321909356,
+          "ci95": [
+            0.15048190027384803,
+            0.19843354899633614
+          ]
+        }
+      }
+    },
+    "primary_comparison": {
+      "contrast": "eeg_context_logistic minus context_logistic",
+      "metric": "average_precision",
+      "value": 0.07752728694234812,
+      "ci95": [
+        0.020300089893322465,
+        0.13527627503647238
+      ]
+    }
+  }
+}

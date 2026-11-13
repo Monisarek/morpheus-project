@@ -21,3 +21,16 @@
 | E09.1 | P1 | E07.1 | Зарегистрировать гипотезу и проверить изменение на validation, записать рецензию | `python -m ocon9000 experiment --run runs/dosei-v2` | [Гипотеза](research/hypotheses.jsonl), [решение](research/decisions.jsonl), [сравнение](runs/dosei-v2/variant_metrics.json) | DONE |
 | E10.1 | P1 | E07.1, E08.1 | Провести нулевой и негативный контроли, оценить интервалы и ошибки | `python -m ocon9000 falsify --run runs/dosei-v2` | [Контроли](runs/dosei-v2/falsification.json) | DONE |
 | E11.1 | P1 | E08.1, E09.1, E10.1 | Заморозить кандидата, выполнить holdout и повторить расчёт для отчёта | Сверить отчёт, манифест и команды | [Заморозка](runs/dosei-v2/candidate.json), [финальные метрики](runs/dosei-v2/holdout_metrics.json), [повтор](reports/REPRODUCIBILITY.md) | DONE |
+
+## EEG-002 v2
+
+| ID | Приоритет | Зависит от | Критерий приёмки | Команда проверки | Доказательство | Статус |
+|---|---|---|---|---|---|---|
+| E12 | P0 | E11.1 | Проверить архив, сохранить EEG-001, повторить сырой прогон и сравнить результаты | `python -m tools.replicate_eeg001 LOCAL_ARCHIVE LOCAL_RUN runs/eeg-002-replay local-replication.json` | [16 побайтовых совпадений и 10 проверок происхождения](results/eeg-002/replication.json) | DONE |
+| E13 | P0 | E11.1 | Проверить временные границы, клиническую историю и целостность разметки | `python -m unittest discover -s tests` | [Аудит окон](results/eeg-002/qc_audit.json), [тест истории](tests/test_explore_eeg002.py) | DONE |
+| E14 | P0 | E13 | Посчитать воронку наблюдения и QC на всех старых записях, проверить чувствительность | `python -m tools.audit_eeg002 --help` | [Воронка](results/eeg-002/qc_audit.json), [чувствительность](results/eeg-002/exploratory.json) | DONE |
+| E15 | P0 | E13 | Сравнить на общих окнах исходный и расширенный контекст, EEG-only и EEG+контекст | `python -m tools.explore_eeg002 --help` | [Сравнение](results/eeg-002/exploratory.json) | DONE |
+| E16 | P1 | E13, E15 | Независимо проверить код, расчёт и интерпретацию. Зафиксировать видимость результатов | Сверить пересчёт с агрегатами | [Слепой аудит](reports/EEG_002_INDEPENDENT_REVIEW.md) | DONE |
+| E17 | P1 | E11.1 | Найти внешние источники, проверить доступ, разметку, качество и пригодность для подтверждения | `python reports/eeg_002_external_qc.py` | [Каталог и реальные QC-проверки](reports/EEG_002_EXTERNAL.md) | DONE |
+| E17.1 | P1 | E17 | Независимо подтвердить замороженную гипотезу на пригодной внешней когорте | Сверить условия включения, затем заморозить новый протокол | [Блокер доступности и разметки](reports/EEG_002_EXTERNAL.md) | BLOCKED |
+| E18 | P1 | E14, E15, E16 | Зарегистрировать проверяемую гипотезу, реализовать изменение и опубликовать результат и возражения | Сверить протокол, результаты и журнал | [Гипотеза](research/eeg-002-hypotheses.jsonl), [решение](research/eeg-002-decisions.jsonl), [возражения](reports/EEG_002_INDEPENDENT_REVIEW.md) | DONE |

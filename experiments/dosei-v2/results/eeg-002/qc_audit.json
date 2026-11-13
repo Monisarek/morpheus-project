@@ -1,0 +1,799 @@
+{
+  "scientific_status": "AUDIT / SENSITIVITY; EEG-001 partitions reused",
+  "group_unit": "recording",
+  "score_unit": "window",
+  "person_identity_confirmed": false,
+  "records": {
+    "train": {
+      "attempted": 102,
+      "parsed": 102,
+      "duration_4ms_ticks": 44236423,
+      "contributing_model_windows": 101
+    },
+    "all": {
+      "attempted": 171,
+      "parsed": 169,
+      "duration_4ms_ticks": 69635193,
+      "unparsed": 2,
+      "contributing_model_windows": 168
+    },
+    "validation": {
+      "attempted": 34,
+      "parsed": 33,
+      "duration_4ms_ticks": 12951580,
+      "unparsed": 1,
+      "contributing_model_windows": 33
+    },
+    "holdout": {
+      "attempted": 35,
+      "parsed": 34,
+      "duration_4ms_ticks": 12447190,
+      "unparsed": 1,
+      "contributing_model_windows": 34
+    }
+  },
+  "funnel": {
+    "train": {
+      "grid_windows": 11644,
+      "full_horizon": 11236,
+      "observed": 9734,
+      "model": 6353
+    },
+    "all": {
+      "grid_windows": 18316,
+      "full_horizon": 17640,
+      "observed": 15290,
+      "model": 9962
+    },
+    "validation": {
+      "grid_windows": 3404,
+      "full_horizon": 3272,
+      "observed": 2950,
+      "model": 1925
+    },
+    "holdout": {
+      "grid_windows": 3268,
+      "full_horizon": 3132,
+      "observed": 2606,
+      "model": 1684
+    }
+  },
+  "qc_by_outcome": {
+    "train": {
+      "unknown": {
+        "FAIL": 756,
+        "WARN": 1154
+      },
+      "positive": {
+        "FAIL": 898,
+        "WARN": 1624
+      },
+      "negative": {
+        "WARN": 4729,
+        "FAIL": 2483
+      }
+    },
+    "all": {
+      "unknown": {
+        "FAIL": 1180,
+        "WARN": 1846
+      },
+      "positive": {
+        "FAIL": 1470,
+        "WARN": 2558
+      },
+      "negative": {
+        "WARN": 7404,
+        "FAIL": 3858
+      }
+    },
+    "validation": {
+      "negative": {
+        "FAIL": 733,
+        "WARN": 1390
+      },
+      "positive": {
+        "WARN": 535,
+        "FAIL": 292
+      },
+      "unknown": {
+        "FAIL": 158,
+        "WARN": 296
+      }
+    },
+    "holdout": {
+      "negative": {
+        "FAIL": 642,
+        "WARN": 1285
+      },
+      "positive": {
+        "FAIL": 280,
+        "WARN": 399
+      },
+      "unknown": {
+        "WARN": 396,
+        "FAIL": 266
+      }
+    }
+  },
+  "qc_reasons": {
+    "train": {
+      "FAIL:saturation": 3417,
+      "WARN:interpolated_at_most_5pct": 7507,
+      "WARN:line_power_50hz": 689,
+      "FAIL:missing_above_5pct": 720,
+      "WARN:large_sample_jump": 435
+    },
+    "all": {
+      "FAIL:saturation": 5148,
+      "WARN:interpolated_at_most_5pct": 11808,
+      "WARN:line_power_50hz": 979,
+      "FAIL:missing_above_5pct": 1360,
+      "WARN:large_sample_jump": 650
+    },
+    "validation": {
+      "FAIL:missing_above_5pct": 352,
+      "FAIL:saturation": 831,
+      "WARN:interpolated_at_most_5pct": 2221,
+      "WARN:large_sample_jump": 87,
+      "WARN:line_power_50hz": 197
+    },
+    "holdout": {
+      "FAIL:saturation": 900,
+      "WARN:interpolated_at_most_5pct": 2080,
+      "WARN:large_sample_jump": 128,
+      "FAIL:missing_above_5pct": 288,
+      "WARN:line_power_50hz": 93
+    }
+  },
+  "outcome_strata": {
+    "train": {
+      "direction/LOC/positive": {
+        "denominator": 1167,
+        "kept": 623
+      },
+      "recent_bolus/no/positive": {
+        "denominator": 1465,
+        "kept": 1082
+      },
+      "elapsed_minutes/0_to_5/positive": {
+        "denominator": 548,
+        "kept": 205
+      },
+      "past_endoscopy_marker/no/positive": {
+        "denominator": 325,
+        "kept": 91
+      },
+      "recent_bolus/yes/positive": {
+        "denominator": 1057,
+        "kept": 542
+      },
+      "direction/negative/negative": {
+        "denominator": 7212,
+        "kept": 4729
+      },
+      "recent_bolus/yes/negative": {
+        "denominator": 1980,
+        "kept": 1086
+      },
+      "elapsed_minutes/0_to_5/negative": {
+        "denominator": 1148,
+        "kept": 377
+      },
+      "past_endoscopy_marker/yes/negative": {
+        "denominator": 6545,
+        "kept": 4595
+      },
+      "recent_bolus/no/negative": {
+        "denominator": 5232,
+        "kept": 3643
+      },
+      "elapsed_minutes/5_to_15/negative": {
+        "denominator": 2589,
+        "kept": 1791
+      },
+      "direction/ROC/positive": {
+        "denominator": 1135,
+        "kept": 861
+      },
+      "elapsed_minutes/5_to_15/positive": {
+        "denominator": 799,
+        "kept": 543
+      },
+      "past_endoscopy_marker/yes/positive": {
+        "denominator": 2197,
+        "kept": 1533
+      },
+      "direction/LOC+ROC/positive": {
+        "denominator": 220,
+        "kept": 140
+      },
+      "elapsed_minutes/15_plus/negative": {
+        "denominator": 3475,
+        "kept": 2561
+      },
+      "elapsed_minutes/15_plus/positive": {
+        "denominator": 1175,
+        "kept": 876
+      },
+      "past_endoscopy_marker/no/negative": {
+        "denominator": 667,
+        "kept": 134
+      }
+    },
+    "all": {
+      "direction/LOC/positive": {
+        "denominator": 1869,
+        "kept": 993
+      },
+      "recent_bolus/no/positive": {
+        "denominator": 2368,
+        "kept": 1706
+      },
+      "elapsed_minutes/0_to_5/positive": {
+        "denominator": 878,
+        "kept": 336
+      },
+      "past_endoscopy_marker/no/positive": {
+        "denominator": 547,
+        "kept": 172
+      },
+      "recent_bolus/yes/positive": {
+        "denominator": 1660,
+        "kept": 852
+      },
+      "direction/negative/negative": {
+        "denominator": 11262,
+        "kept": 7404
+      },
+      "recent_bolus/yes/negative": {
+        "denominator": 3192,
+        "kept": 1768
+      },
+      "elapsed_minutes/0_to_5/negative": {
+        "denominator": 1890,
+        "kept": 666
+      },
+      "past_endoscopy_marker/yes/negative": {
+        "denominator": 10136,
+        "kept": 7146
+      },
+      "recent_bolus/no/negative": {
+        "denominator": 8070,
+        "kept": 5636
+      },
+      "elapsed_minutes/5_to_15/negative": {
+        "denominator": 4198,
+        "kept": 2894
+      },
+      "direction/ROC/positive": {
+        "denominator": 1820,
+        "kept": 1352
+      },
+      "elapsed_minutes/5_to_15/positive": {
+        "denominator": 1425,
+        "kept": 945
+      },
+      "past_endoscopy_marker/yes/positive": {
+        "denominator": 3481,
+        "kept": 2386
+      },
+      "direction/LOC+ROC/positive": {
+        "denominator": 339,
+        "kept": 213
+      },
+      "elapsed_minutes/15_plus/negative": {
+        "denominator": 5174,
+        "kept": 3844
+      },
+      "elapsed_minutes/15_plus/positive": {
+        "denominator": 1725,
+        "kept": 1277
+      },
+      "past_endoscopy_marker/no/negative": {
+        "denominator": 1126,
+        "kept": 258
+      }
+    },
+    "validation": {
+      "direction/negative/negative": {
+        "denominator": 2123,
+        "kept": 1390
+      },
+      "recent_bolus/no/negative": {
+        "denominator": 1493,
+        "kept": 1054
+      },
+      "elapsed_minutes/0_to_5/negative": {
+        "denominator": 402,
+        "kept": 166
+      },
+      "past_endoscopy_marker/no/negative": {
+        "denominator": 250,
+        "kept": 74
+      },
+      "recent_bolus/yes/negative": {
+        "denominator": 630,
+        "kept": 336
+      },
+      "direction/LOC/positive": {
+        "denominator": 382,
+        "kept": 207
+      },
+      "recent_bolus/yes/positive": {
+        "denominator": 322,
+        "kept": 171
+      },
+      "elapsed_minutes/0_to_5/positive": {
+        "denominator": 156,
+        "kept": 67
+      },
+      "past_endoscopy_marker/no/positive": {
+        "denominator": 119,
+        "kept": 50
+      },
+      "recent_bolus/no/positive": {
+        "denominator": 505,
+        "kept": 364
+      },
+      "direction/ROC/positive": {
+        "denominator": 375,
+        "kept": 281
+      },
+      "past_endoscopy_marker/yes/positive": {
+        "denominator": 708,
+        "kept": 485
+      },
+      "elapsed_minutes/5_to_15/positive": {
+        "denominator": 345,
+        "kept": 233
+      },
+      "elapsed_minutes/5_to_15/negative": {
+        "denominator": 768,
+        "kept": 535
+      },
+      "past_endoscopy_marker/yes/negative": {
+        "denominator": 1873,
+        "kept": 1316
+      },
+      "direction/LOC+ROC/positive": {
+        "denominator": 70,
+        "kept": 47
+      },
+      "elapsed_minutes/15_plus/negative": {
+        "denominator": 953,
+        "kept": 689
+      },
+      "elapsed_minutes/15_plus/positive": {
+        "denominator": 326,
+        "kept": 235
+      }
+    },
+    "holdout": {
+      "direction/negative/negative": {
+        "denominator": 1927,
+        "kept": 1285
+      },
+      "recent_bolus/yes/negative": {
+        "denominator": 582,
+        "kept": 346
+      },
+      "elapsed_minutes/0_to_5/negative": {
+        "denominator": 340,
+        "kept": 123
+      },
+      "past_endoscopy_marker/no/negative": {
+        "denominator": 209,
+        "kept": 50
+      },
+      "past_endoscopy_marker/yes/negative": {
+        "denominator": 1718,
+        "kept": 1235
+      },
+      "recent_bolus/no/negative": {
+        "denominator": 1345,
+        "kept": 939
+      },
+      "direction/LOC/positive": {
+        "denominator": 320,
+        "kept": 163
+      },
+      "recent_bolus/no/positive": {
+        "denominator": 398,
+        "kept": 260
+      },
+      "elapsed_minutes/0_to_5/positive": {
+        "denominator": 174,
+        "kept": 64
+      },
+      "past_endoscopy_marker/yes/positive": {
+        "denominator": 576,
+        "kept": 368
+      },
+      "recent_bolus/yes/positive": {
+        "denominator": 281,
+        "kept": 139
+      },
+      "elapsed_minutes/5_to_15/negative": {
+        "denominator": 841,
+        "kept": 568
+      },
+      "direction/ROC/positive": {
+        "denominator": 310,
+        "kept": 210
+      },
+      "elapsed_minutes/5_to_15/positive": {
+        "denominator": 281,
+        "kept": 169
+      },
+      "elapsed_minutes/15_plus/positive": {
+        "denominator": 224,
+        "kept": 166
+      },
+      "elapsed_minutes/15_plus/negative": {
+        "denominator": 746,
+        "kept": 594
+      },
+      "past_endoscopy_marker/no/positive": {
+        "denominator": 103,
+        "kept": 31
+      },
+      "direction/LOC+ROC/positive": {
+        "denominator": 49,
+        "kept": 26
+      }
+    }
+  },
+  "rule_sensitivity": {
+    "train": {
+      "original_observed_and_pass_or_warn/positive": {
+        "denominator": 2522,
+        "kept": 1624
+      },
+      "pass_only/positive": {
+        "denominator": 2522,
+        "kept": 0
+      },
+      "pass_or_only_interpolation_warning/positive": {
+        "denominator": 2522,
+        "kept": 1408
+      },
+      "clinical_observation_within_30s_and_pass_or_warn/positive": {
+        "denominator": 2522,
+        "kept": 1196
+      },
+      "moaas_within_60s_and_pass_or_warn/positive": {
+        "denominator": 2522,
+        "kept": 1601
+      },
+      "original_observed_and_pass_or_warn/negative": {
+        "denominator": 7212,
+        "kept": 4729
+      },
+      "pass_only/negative": {
+        "denominator": 7212,
+        "kept": 0
+      },
+      "pass_or_only_interpolation_warning/negative": {
+        "denominator": 7212,
+        "kept": 4039
+      },
+      "clinical_observation_within_30s_and_pass_or_warn/negative": {
+        "denominator": 7212,
+        "kept": 3188
+      },
+      "moaas_within_60s_and_pass_or_warn/negative": {
+        "denominator": 7212,
+        "kept": 4729
+      }
+    },
+    "all": {
+      "original_observed_and_pass_or_warn/positive": {
+        "denominator": 4028,
+        "kept": 2558
+      },
+      "pass_only/positive": {
+        "denominator": 4028,
+        "kept": 0
+      },
+      "pass_or_only_interpolation_warning/positive": {
+        "denominator": 4028,
+        "kept": 2230
+      },
+      "clinical_observation_within_30s_and_pass_or_warn/positive": {
+        "denominator": 4028,
+        "kept": 1916
+      },
+      "moaas_within_60s_and_pass_or_warn/positive": {
+        "denominator": 4028,
+        "kept": 2524
+      },
+      "original_observed_and_pass_or_warn/negative": {
+        "denominator": 11262,
+        "kept": 7404
+      },
+      "pass_only/negative": {
+        "denominator": 11262,
+        "kept": 0
+      },
+      "pass_or_only_interpolation_warning/negative": {
+        "denominator": 11262,
+        "kept": 6435
+      },
+      "clinical_observation_within_30s_and_pass_or_warn/negative": {
+        "denominator": 11262,
+        "kept": 4987
+      },
+      "moaas_within_60s_and_pass_or_warn/negative": {
+        "denominator": 11262,
+        "kept": 7404
+      }
+    },
+    "validation": {
+      "original_observed_and_pass_or_warn/negative": {
+        "denominator": 2123,
+        "kept": 1390
+      },
+      "pass_only/negative": {
+        "denominator": 2123,
+        "kept": 0
+      },
+      "pass_or_only_interpolation_warning/negative": {
+        "denominator": 2123,
+        "kept": 1234
+      },
+      "clinical_observation_within_30s_and_pass_or_warn/negative": {
+        "denominator": 2123,
+        "kept": 995
+      },
+      "moaas_within_60s_and_pass_or_warn/negative": {
+        "denominator": 2123,
+        "kept": 1390
+      },
+      "original_observed_and_pass_or_warn/positive": {
+        "denominator": 827,
+        "kept": 535
+      },
+      "pass_only/positive": {
+        "denominator": 827,
+        "kept": 0
+      },
+      "pass_or_only_interpolation_warning/positive": {
+        "denominator": 827,
+        "kept": 465
+      },
+      "clinical_observation_within_30s_and_pass_or_warn/positive": {
+        "denominator": 827,
+        "kept": 420
+      },
+      "moaas_within_60s_and_pass_or_warn/positive": {
+        "denominator": 827,
+        "kept": 530
+      }
+    },
+    "holdout": {
+      "original_observed_and_pass_or_warn/negative": {
+        "denominator": 1927,
+        "kept": 1285
+      },
+      "pass_only/negative": {
+        "denominator": 1927,
+        "kept": 0
+      },
+      "pass_or_only_interpolation_warning/negative": {
+        "denominator": 1927,
+        "kept": 1162
+      },
+      "clinical_observation_within_30s_and_pass_or_warn/negative": {
+        "denominator": 1927,
+        "kept": 804
+      },
+      "moaas_within_60s_and_pass_or_warn/negative": {
+        "denominator": 1927,
+        "kept": 1285
+      },
+      "original_observed_and_pass_or_warn/positive": {
+        "denominator": 679,
+        "kept": 399
+      },
+      "pass_only/positive": {
+        "denominator": 679,
+        "kept": 0
+      },
+      "pass_or_only_interpolation_warning/positive": {
+        "denominator": 679,
+        "kept": 357
+      },
+      "clinical_observation_within_30s_and_pass_or_warn/positive": {
+        "denominator": 679,
+        "kept": 300
+      },
+      "moaas_within_60s_and_pass_or_warn/positive": {
+        "denominator": 679,
+        "kept": 393
+      }
+    }
+  },
+  "qc_reasons_by_outcome": {
+    "train": {
+      "unknown": {
+        "FAIL:saturation": 586,
+        "WARN:interpolated_at_most_5pct": 1154,
+        "WARN:line_power_50hz": 90,
+        "FAIL:missing_above_5pct": 170,
+        "WARN:large_sample_jump": 78
+      },
+      "positive": {
+        "FAIL:saturation": 762,
+        "WARN:interpolated_at_most_5pct": 1624,
+        "WARN:line_power_50hz": 112,
+        "FAIL:missing_above_5pct": 136,
+        "WARN:large_sample_jump": 122
+      },
+      "negative": {
+        "WARN:interpolated_at_most_5pct": 4729,
+        "FAIL:saturation": 2069,
+        "WARN:line_power_50hz": 487,
+        "FAIL:missing_above_5pct": 414,
+        "WARN:large_sample_jump": 235
+      }
+    },
+    "all": {
+      "unknown": {
+        "FAIL:saturation": 885,
+        "WARN:interpolated_at_most_5pct": 1846,
+        "WARN:line_power_50hz": 136,
+        "FAIL:missing_above_5pct": 295,
+        "WARN:large_sample_jump": 129
+      },
+      "positive": {
+        "FAIL:saturation": 1157,
+        "WARN:interpolated_at_most_5pct": 2558,
+        "WARN:line_power_50hz": 197,
+        "FAIL:missing_above_5pct": 313,
+        "WARN:large_sample_jump": 154
+      },
+      "negative": {
+        "WARN:interpolated_at_most_5pct": 7404,
+        "FAIL:saturation": 3106,
+        "WARN:line_power_50hz": 646,
+        "FAIL:missing_above_5pct": 752,
+        "WARN:large_sample_jump": 367
+      }
+    },
+    "validation": {
+      "negative": {
+        "FAIL:missing_above_5pct": 190,
+        "FAIL:saturation": 543,
+        "WARN:interpolated_at_most_5pct": 1390,
+        "WARN:large_sample_jump": 50,
+        "WARN:line_power_50hz": 113
+      },
+      "positive": {
+        "WARN:interpolated_at_most_5pct": 535,
+        "FAIL:saturation": 189,
+        "FAIL:missing_above_5pct": 103,
+        "WARN:large_sample_jump": 17,
+        "WARN:line_power_50hz": 56
+      },
+      "unknown": {
+        "FAIL:saturation": 99,
+        "WARN:interpolated_at_most_5pct": 296,
+        "WARN:large_sample_jump": 20,
+        "FAIL:missing_above_5pct": 59,
+        "WARN:line_power_50hz": 28
+      }
+    },
+    "holdout": {
+      "negative": {
+        "FAIL:saturation": 494,
+        "WARN:interpolated_at_most_5pct": 1285,
+        "WARN:large_sample_jump": 82,
+        "WARN:line_power_50hz": 46,
+        "FAIL:missing_above_5pct": 148
+      },
+      "positive": {
+        "FAIL:saturation": 206,
+        "WARN:interpolated_at_most_5pct": 399,
+        "WARN:large_sample_jump": 15,
+        "FAIL:missing_above_5pct": 74,
+        "WARN:line_power_50hz": 29
+      },
+      "unknown": {
+        "WARN:interpolated_at_most_5pct": 396,
+        "WARN:large_sample_jump": 31,
+        "FAIL:saturation": 200,
+        "FAIL:missing_above_5pct": 66,
+        "WARN:line_power_50hz": 18
+      }
+    }
+  },
+  "unique_transition_coverage": {
+    "train": {
+      "LOC": {
+        "raw": 349,
+        "in_any_observed_horizon": 349,
+        "in_any_retained_horizon": 262
+      },
+      "ROC": {
+        "raw": 349,
+        "in_any_observed_horizon": 348,
+        "in_any_retained_horizon": 312
+      }
+    },
+    "all": {
+      "LOC": {
+        "raw": 556,
+        "in_any_observed_horizon": 556,
+        "in_any_retained_horizon": 418
+      },
+      "ROC": {
+        "raw": 556,
+        "in_any_observed_horizon": 555,
+        "in_any_retained_horizon": 494
+      }
+    },
+    "validation": {
+      "LOC": {
+        "raw": 114,
+        "in_any_observed_horizon": 114,
+        "in_any_retained_horizon": 91
+      },
+      "ROC": {
+        "raw": 114,
+        "in_any_observed_horizon": 114,
+        "in_any_retained_horizon": 105
+      }
+    },
+    "holdout": {
+      "LOC": {
+        "raw": 93,
+        "in_any_observed_horizon": 93,
+        "in_any_retained_horizon": 65
+      },
+      "ROC": {
+        "raw": 93,
+        "in_any_observed_horizon": 93,
+        "in_any_retained_horizon": 77
+      }
+    }
+  },
+  "reconciliation_mismatches": {
+    "outcome_or_eligibility": 0,
+    "causal_context": 0,
+    "feature_presence_vs_qc": 0,
+    "record_grid": 0
+  },
+  "generated_order_matches_model_sort": true,
+  "scope": {
+    "sensitivity_denominator": "Original observed windows of same class; alternate rules only restrict them",
+    "strata_denominator": "Original observed windows in each stratum",
+    "endoscopy": "Past marker availability is a procedure timing proxy, not sedation phase",
+    "emg_or_motion": "Not measured by these EEG-001 exports",
+    "clinical": "Targets reconciled from normalized raw-event export, not independent clinician relabeling"
+  },
+  "raw_duplicate_clock_audit": {
+    "archive_matches_original": true,
+    "records_inspected": 2,
+    "exact_pairs": 0,
+    "conflicting_pairs": 2,
+    "adjacent_duplicate_pairs": 2,
+    "records_with_conflicting_pairs": 2,
+    "differing_columns": {
+      "EVENT": 2,
+      "MOAAS": 2,
+      "Endoscopy": 1,
+      "SOC": 1
+    },
+    "both_nonblank_differing_columns": {
+      "EVENT": 2
+    },
+    "blank_vs_nonblank_columns": {
+      "MOAAS": 2,
+      "Endoscopy": 1,
+      "SOC": 1
+    },
+    "recovery_rule": "Only consider removal of exact adjacent duplicate rows followed by strict clock validation",
+    "records_recovered": 0
+  }
+}

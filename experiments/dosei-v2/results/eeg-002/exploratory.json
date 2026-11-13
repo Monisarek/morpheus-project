@@ -1,0 +1,1146 @@
+{
+  "status": "EXPLORATORY",
+  "formerly_open_holdout_reused": true,
+  "resampling_unit": "recording",
+  "recordings_parsed": 169,
+  "grid_windows": 18316,
+  "outer_folds": 5,
+  "inner_folds": 4,
+  "clinical_history_columns": [
+    "last_soc",
+    "soc_unknown",
+    "soc_age",
+    "last_moaas",
+    "moaas_change",
+    "moaas_age",
+    "observation_age",
+    "observations_60s"
+  ],
+  "cohorts": {
+    "primary": {
+      "recordings": 168,
+      "windows": 9962,
+      "positive": 2558,
+      "fraction_of_grid_windows": 0.5438960471718716,
+      "models": {
+        "frequency": {
+          "average_precision": {
+            "value": 0.23848954522752008,
+            "ci95": [
+              0.21348455718161521,
+              0.267944546828208
+            ]
+          },
+          "auroc": {
+            "value": 0.45569827542874564,
+            "ci95": [
+              0.4241540599703206,
+              0.48606114457521266
+            ]
+          },
+          "brier": {
+            "value": 0.19131322262606743,
+            "ci95": [
+              0.18027933965553045,
+              0.202757123575282
+            ]
+          }
+        },
+        "last_state": {
+          "average_precision": {
+            "value": 0.31005750082141154,
+            "ci95": [
+              0.2848665418054454,
+              0.3435250766107745
+            ]
+          },
+          "auroc": {
+            "value": 0.5592350657612118,
+            "ci95": [
+              0.5322165074340547,
+              0.5839155892380613
+            ]
+          },
+          "brier": {
+            "value": 0.18655916415048915,
+            "ci95": [
+              0.17413142186120711,
+              0.19899063176060441
+            ]
+          }
+        },
+        "time_dose": {
+          "average_precision": {
+            "value": 0.298955033101413,
+            "ci95": [
+              0.27036111232903826,
+              0.3315374233056023
+            ]
+          },
+          "auroc": {
+            "value": 0.5422779838381636,
+            "ci95": [
+              0.5174044605720168,
+              0.5657379531101069
+            ]
+          },
+          "brier": {
+            "value": 0.18984949674563087,
+            "ci95": [
+              0.17835149152823312,
+              0.20169532524964295
+            ]
+          }
+        },
+        "eeg_only": {
+          "average_precision": {
+            "value": 0.343922088583967,
+            "ci95": [
+              0.31308636774950915,
+              0.376464385855754
+            ]
+          },
+          "auroc": {
+            "value": 0.6152288516360997,
+            "ci95": [
+              0.5840912921380437,
+              0.6475576958449983
+            ]
+          },
+          "brier": {
+            "value": 0.18596325723148305,
+            "ci95": [
+              0.17353927793911245,
+              0.1985389655550295
+            ]
+          }
+        },
+        "eeg_time_dose": {
+          "average_precision": {
+            "value": 0.3531368564987962,
+            "ci95": [
+              0.3229065424844169,
+              0.3875566193547932
+            ]
+          },
+          "auroc": {
+            "value": 0.6237559289000852,
+            "ci95": [
+              0.5946402148590387,
+              0.6546843294535185
+            ]
+          },
+          "brier": {
+            "value": 0.18517723929383606,
+            "ci95": [
+              0.1726988673617927,
+              0.19759701095929036
+            ]
+          }
+        },
+        "clinical_history": {
+          "average_precision": {
+            "value": 0.39667626046680265,
+            "ci95": [
+              0.36703505004304987,
+              0.4309367880370575
+            ]
+          },
+          "auroc": {
+            "value": 0.6229780808632487,
+            "ci95": [
+              0.6002839014042245,
+              0.6451247925611135
+            ]
+          },
+          "brier": {
+            "value": 0.1804468147190899,
+            "ci95": [
+              0.16896877288314965,
+              0.19165224517963372
+            ]
+          }
+        },
+        "eeg_clinical_history": {
+          "average_precision": {
+            "value": 0.4136517889973475,
+            "ci95": [
+              0.3853802766287531,
+              0.4450761628208457
+            ]
+          },
+          "auroc": {
+            "value": 0.6745566076110414,
+            "ci95": [
+              0.6494315754048261,
+              0.6989428236295563
+            ]
+          },
+          "brier": {
+            "value": 0.17745544972788374,
+            "ci95": [
+              0.1644978838328578,
+              0.189430376184437
+            ]
+          }
+        }
+      },
+      "primary_comparison": {
+        "contrast": "eeg_clinical_history minus clinical_history",
+        "metric": "average_precision",
+        "value": 0.016975528530544848,
+        "ci95": [
+          -0.0024305703229125447,
+          0.0385959378766126
+        ]
+      },
+      "bootstrap_replicates": 1000,
+      "calibration": {
+        "frequency": [
+          {
+            "bin": 1,
+            "n": 9962,
+            "mean_prediction": 0.2564656470109122,
+            "observed_frequency": 0.25677574784179885
+          }
+        ],
+        "last_state": [
+          {
+            "bin": 1,
+            "n": 9492,
+            "mean_prediction": 0.24611685422621662,
+            "observed_frequency": 0.24599662873999156
+          },
+          {
+            "bin": 2,
+            "n": 470,
+            "mean_prediction": 0.4822447063198969,
+            "observed_frequency": 0.474468085106383
+          }
+        ],
+        "time_dose": [
+          {
+            "bin": 0,
+            "n": 410,
+            "mean_prediction": 0.18864265360472063,
+            "observed_frequency": 0.1878048780487805
+          },
+          {
+            "bin": 1,
+            "n": 9223,
+            "mean_prediction": 0.25162311174740515,
+            "observed_frequency": 0.2544725143662583
+          },
+          {
+            "bin": 2,
+            "n": 305,
+            "mean_prediction": 0.4617066798170886,
+            "observed_frequency": 0.419672131147541
+          },
+          {
+            "bin": 3,
+            "n": 24,
+            "mean_prediction": 0.6199059061260401,
+            "observed_frequency": 0.25
+          }
+        ],
+        "eeg_only": [
+          {
+            "bin": 0,
+            "n": 3079,
+            "mean_prediction": 0.1451407498121792,
+            "observed_frequency": 0.17960376745696655
+          },
+          {
+            "bin": 1,
+            "n": 5875,
+            "mean_prediction": 0.28144266542242846,
+            "observed_frequency": 0.2716595744680851
+          },
+          {
+            "bin": 2,
+            "n": 936,
+            "mean_prediction": 0.45782854601593564,
+            "observed_frequency": 0.4091880341880342
+          },
+          {
+            "bin": 3,
+            "n": 67,
+            "mean_prediction": 0.6523134920394994,
+            "observed_frequency": 0.34328358208955223
+          },
+          {
+            "bin": 4,
+            "n": 5,
+            "mean_prediction": 0.8729251886646908,
+            "observed_frequency": 0.6
+          }
+        ],
+        "eeg_time_dose": [
+          {
+            "bin": 0,
+            "n": 3403,
+            "mean_prediction": 0.143468977795101,
+            "observed_frequency": 0.16632383191301792
+          },
+          {
+            "bin": 1,
+            "n": 5365,
+            "mean_prediction": 0.28114739461133514,
+            "observed_frequency": 0.28014911463187325
+          },
+          {
+            "bin": 2,
+            "n": 1089,
+            "mean_prediction": 0.46530434878474747,
+            "observed_frequency": 0.40587695133149676
+          },
+          {
+            "bin": 3,
+            "n": 99,
+            "mean_prediction": 0.6512747439349437,
+            "observed_frequency": 0.43434343434343436
+          },
+          {
+            "bin": 4,
+            "n": 6,
+            "mean_prediction": 0.8577985652635567,
+            "observed_frequency": 0.6666666666666666
+          }
+        ],
+        "clinical_history": [
+          {
+            "bin": 0,
+            "n": 2970,
+            "mean_prediction": 0.15887735763660674,
+            "observed_frequency": 0.1872053872053872
+          },
+          {
+            "bin": 1,
+            "n": 5756,
+            "mean_prediction": 0.2554126952766505,
+            "observed_frequency": 0.23523280055594162
+          },
+          {
+            "bin": 2,
+            "n": 1111,
+            "mean_prediction": 0.48493327302567507,
+            "observed_frequency": 0.5139513951395139
+          },
+          {
+            "bin": 3,
+            "n": 125,
+            "mean_prediction": 0.65549182595784,
+            "observed_frequency": 0.616
+          }
+        ],
+        "eeg_clinical_history": [
+          {
+            "bin": 0,
+            "n": 4092,
+            "mean_prediction": 0.13475458705428003,
+            "observed_frequency": 0.14980449657869013
+          },
+          {
+            "bin": 1,
+            "n": 4363,
+            "mean_prediction": 0.27855077103269565,
+            "observed_frequency": 0.2828329131331653
+          },
+          {
+            "bin": 2,
+            "n": 1169,
+            "mean_prediction": 0.477401421427288,
+            "observed_frequency": 0.4516680923866553
+          },
+          {
+            "bin": 3,
+            "n": 300,
+            "mean_prediction": 0.6687202597338769,
+            "observed_frequency": 0.53
+          },
+          {
+            "bin": 4,
+            "n": 38,
+            "mean_prediction": 0.8382863342397856,
+            "observed_frequency": 0.631578947368421
+          }
+        ]
+      },
+      "operating_points": {
+        "last_state": {
+          "fpr": 0.03336034575904916,
+          "sensitivity": 0.08717748240813135
+        },
+        "time_dose": {
+          "fpr": 0.08887088060507833,
+          "sensitivity": 0.14464425332290853
+        },
+        "eeg_only": {
+          "fpr": 0.10386277687736359,
+          "sensitivity": 0.2052384675527756
+        },
+        "eeg_time_dose": {
+          "fpr": 0.10440302539168017,
+          "sensitivity": 0.20641125879593433
+        },
+        "clinical_history": {
+          "fpr": 0.09927066450567261,
+          "sensitivity": 0.28342455043002346
+        },
+        "eeg_clinical_history": {
+          "fpr": 0.09994597514856834,
+          "sensitivity": 0.2627052384675528
+        }
+      }
+    },
+    "no_jump_or_line_warning": {
+      "recordings": 167,
+      "windows": 8665,
+      "positive": 2230,
+      "fraction_of_grid_windows": 0.4730836427167504,
+      "models": {
+        "frequency": {
+          "average_precision": {
+            "value": 0.240908842699332,
+            "ci95": [
+              0.21382361059012947,
+              0.2719854214527073
+            ]
+          },
+          "auroc": {
+            "value": 0.46118494360646833,
+            "ci95": [
+              0.42771220715480296,
+              0.4947886751380355
+            ]
+          },
+          "brier": {
+            "value": 0.191526970365649,
+            "ci95": [
+              0.18112632505111328,
+              0.20243836495058012
+            ]
+          }
+        },
+        "last_state": {
+          "average_precision": {
+            "value": 0.31029350686080204,
+            "ci95": [
+              0.2848400494429876,
+              0.3432384276639854
+            ]
+          },
+          "auroc": {
+            "value": 0.5639111013550475,
+            "ci95": [
+              0.5358757000375465,
+              0.5912512095993607
+            ]
+          },
+          "brier": {
+            "value": 0.18664601980592746,
+            "ci95": [
+              0.17448186739084834,
+              0.19884462554463936
+            ]
+          }
+        },
+        "time_dose": {
+          "average_precision": {
+            "value": 0.29390088199854814,
+            "ci95": [
+              0.2649337236752047,
+              0.32284214551520607
+            ]
+          },
+          "auroc": {
+            "value": 0.5337347256629768,
+            "ci95": [
+              0.5072833161464197,
+              0.5586177743625702
+            ]
+          },
+          "brier": {
+            "value": 0.19063547407441037,
+            "ci95": [
+              0.1798442633023124,
+              0.2023600709993343
+            ]
+          }
+        },
+        "eeg_only": {
+          "average_precision": {
+            "value": 0.3510975688185003,
+            "ci95": [
+              0.32015529349134864,
+              0.3882122864534788
+            ]
+          },
+          "auroc": {
+            "value": 0.6239880000418117,
+            "ci95": [
+              0.5893867221197882,
+              0.6572081040909452
+            ]
+          },
+          "brier": {
+            "value": 0.18497370334633545,
+            "ci95": [
+              0.17269885909649085,
+              0.19827786083480456
+            ]
+          }
+        },
+        "eeg_time_dose": {
+          "average_precision": {
+            "value": 0.358623788335815,
+            "ci95": [
+              0.32652096865727664,
+              0.3934529762632111
+            ]
+          },
+          "auroc": {
+            "value": 0.6291226859836725,
+            "ci95": [
+              0.595000998608279,
+              0.6611038002636931
+            ]
+          },
+          "brier": {
+            "value": 0.1845260045918706,
+            "ci95": [
+              0.17222168312077069,
+              0.19789593408496306
+            ]
+          }
+        },
+        "clinical_history": {
+          "average_precision": {
+            "value": 0.3908530874134926,
+            "ci95": [
+              0.3601332460908931,
+              0.4209905178463654
+            ]
+          },
+          "auroc": {
+            "value": 0.6148104013574865,
+            "ci95": [
+              0.5927178328905243,
+              0.635459454613484
+            ]
+          },
+          "brier": {
+            "value": 0.18178005492338897,
+            "ci95": [
+              0.17092576715453225,
+              0.1938538910636316
+            ]
+          }
+        },
+        "eeg_clinical_history": {
+          "average_precision": {
+            "value": 0.4126723917705392,
+            "ci95": [
+              0.38438642578966536,
+              0.4435554929389575
+            ]
+          },
+          "auroc": {
+            "value": 0.6765876077086839,
+            "ci95": [
+              0.6500518993696083,
+              0.703386372370225
+            ]
+          },
+          "brier": {
+            "value": 0.1776072867125786,
+            "ci95": [
+              0.16528671138550116,
+              0.190757013697169
+            ]
+          }
+        }
+      },
+      "primary_comparison": {
+        "contrast": "eeg_clinical_history minus clinical_history",
+        "metric": "average_precision",
+        "value": 0.0218193043570466,
+        "ci95": [
+          0.0027442523991520642,
+          0.04183446312430313
+        ]
+      },
+      "bootstrap_replicates": 1000,
+      "calibration": {
+        "frequency": [
+          {
+            "bin": 1,
+            "n": 8665,
+            "mean_prediction": 0.2564561148019041,
+            "observed_frequency": 0.2573571840738604
+          }
+        ],
+        "last_state": [
+          {
+            "bin": 1,
+            "n": 8311,
+            "mean_prediction": 0.2453350455283127,
+            "observed_frequency": 0.24750330886776561
+          },
+          {
+            "bin": 2,
+            "n": 354,
+            "mean_prediction": 0.4826634931435599,
+            "observed_frequency": 0.4887005649717514
+          }
+        ],
+        "time_dose": [
+          {
+            "bin": 0,
+            "n": 345,
+            "mean_prediction": 0.18813112747655786,
+            "observed_frequency": 0.22028985507246376
+          },
+          {
+            "bin": 1,
+            "n": 8049,
+            "mean_prediction": 0.25130956675559146,
+            "observed_frequency": 0.25382035035408124
+          },
+          {
+            "bin": 2,
+            "n": 250,
+            "mean_prediction": 0.46102009119846443,
+            "observed_frequency": 0.424
+          },
+          {
+            "bin": 3,
+            "n": 21,
+            "mean_prediction": 0.6161005994208368,
+            "observed_frequency": 0.23809523809523808
+          }
+        ],
+        "eeg_only": [
+          {
+            "bin": 0,
+            "n": 2748,
+            "mean_prediction": 0.14354556018420145,
+            "observed_frequency": 0.1750363901018923
+          },
+          {
+            "bin": 1,
+            "n": 5060,
+            "mean_prediction": 0.2809952931562409,
+            "observed_frequency": 0.274703557312253
+          },
+          {
+            "bin": 2,
+            "n": 802,
+            "mean_prediction": 0.45887474149032104,
+            "observed_frequency": 0.4239401496259352
+          },
+          {
+            "bin": 3,
+            "n": 55,
+            "mean_prediction": 0.6482963939451047,
+            "observed_frequency": 0.34545454545454546
+          }
+        ],
+        "eeg_time_dose": [
+          {
+            "bin": 0,
+            "n": 3023,
+            "mean_prediction": 0.1420143615595227,
+            "observed_frequency": 0.16539861065167052
+          },
+          {
+            "bin": 1,
+            "n": 4626,
+            "mean_prediction": 0.28070421576235277,
+            "observed_frequency": 0.2821011673151751
+          },
+          {
+            "bin": 2,
+            "n": 930,
+            "mean_prediction": 0.4656353044278894,
+            "observed_frequency": 0.4129032258064516
+          },
+          {
+            "bin": 3,
+            "n": 84,
+            "mean_prediction": 0.64703997804697,
+            "observed_frequency": 0.47619047619047616
+          },
+          {
+            "bin": 4,
+            "n": 2,
+            "mean_prediction": 0.8071521765429783,
+            "observed_frequency": 0.5
+          }
+        ],
+        "clinical_history": [
+          {
+            "bin": 0,
+            "n": 2534,
+            "mean_prediction": 0.1613153431285086,
+            "observed_frequency": 0.19534333070244672
+          },
+          {
+            "bin": 1,
+            "n": 5070,
+            "mean_prediction": 0.25503796085521824,
+            "observed_frequency": 0.23372781065088757
+          },
+          {
+            "bin": 2,
+            "n": 960,
+            "mean_prediction": 0.48432251953657196,
+            "observed_frequency": 0.5072916666666667
+          },
+          {
+            "bin": 3,
+            "n": 101,
+            "mean_prediction": 0.6573852026473339,
+            "observed_frequency": 0.6237623762376238
+          }
+        ],
+        "eeg_clinical_history": [
+          {
+            "bin": 0,
+            "n": 3579,
+            "mean_prediction": 0.1336315959400486,
+            "observed_frequency": 0.14864487286951664
+          },
+          {
+            "bin": 1,
+            "n": 3788,
+            "mean_prediction": 0.2785000249011518,
+            "observed_frequency": 0.2877507919746568
+          },
+          {
+            "bin": 2,
+            "n": 1009,
+            "mean_prediction": 0.47812938477125666,
+            "observed_frequency": 0.4489593657086224
+          },
+          {
+            "bin": 3,
+            "n": 260,
+            "mean_prediction": 0.6671267756861193,
+            "observed_frequency": 0.5307692307692308
+          },
+          {
+            "bin": 4,
+            "n": 29,
+            "mean_prediction": 0.8317989037671699,
+            "observed_frequency": 0.5862068965517241
+          }
+        ]
+      },
+      "operating_points": {
+        "last_state": {
+          "fpr": 0.028127428127428127,
+          "sensitivity": 0.07757847533632287
+        },
+        "time_dose": {
+          "fpr": 0.08593628593628594,
+          "sensitivity": 0.13318385650224215
+        },
+        "eeg_only": {
+          "fpr": 0.09961149961149961,
+          "sensitivity": 0.20807174887892377
+        },
+        "eeg_time_dose": {
+          "fpr": 0.10116550116550116,
+          "sensitivity": 0.20582959641255605
+        },
+        "clinical_history": {
+          "fpr": 0.09883449883449884,
+          "sensitivity": 0.27533632286995513
+        },
+        "eeg_clinical_history": {
+          "fpr": 0.10007770007770007,
+          "sensitivity": 0.257847533632287
+        }
+      }
+    },
+    "at_least_two_observation_times": {
+      "recordings": 167,
+      "windows": 5719,
+      "positive": 2528,
+      "fraction_of_grid_windows": 0.31224066390041494,
+      "models": {
+        "frequency": {
+          "average_precision": {
+            "value": 0.4019306500519181,
+            "ci95": [
+              0.35050341477992353,
+              0.46038453305203414
+            ]
+          },
+          "auroc": {
+            "value": 0.42918807940846293,
+            "ci95": [
+              0.38074054811288294,
+              0.4753400224503628
+            ]
+          },
+          "brier": {
+            "value": 0.28191769595206356,
+            "ci95": [
+              0.2601065661381361,
+              0.3037069606872433
+            ]
+          }
+        },
+        "last_state": {
+          "average_precision": {
+            "value": 0.5010939130658244,
+            "ci95": [
+              0.4636009191159095,
+              0.5429876654352059
+            ]
+          },
+          "auroc": {
+            "value": 0.5503986811205567,
+            "ci95": [
+              0.5182569757722001,
+              0.5829247946041972
+            ]
+          },
+          "brier": {
+            "value": 0.27204472417160225,
+            "ci95": [
+              0.24914553992929578,
+              0.2944433900791286
+            ]
+          }
+        },
+        "time_dose": {
+          "average_precision": {
+            "value": 0.48502992164948416,
+            "ci95": [
+              0.44126509386423185,
+              0.5330910275786561
+            ]
+          },
+          "auroc": {
+            "value": 0.5352447449115193,
+            "ci95": [
+              0.5079739122628772,
+              0.5625898368505654
+            ]
+          },
+          "brier": {
+            "value": 0.27873648979458,
+            "ci95": [
+              0.25655353827466465,
+              0.3007265126861955
+            ]
+          }
+        },
+        "eeg_only": {
+          "average_precision": {
+            "value": 0.5528488365436148,
+            "ci95": [
+              0.5087635347851983,
+              0.6013579710956821
+            ]
+          },
+          "auroc": {
+            "value": 0.6264764130922017,
+            "ci95": [
+              0.5820598411799567,
+              0.6672014654211699
+            ]
+          },
+          "brier": {
+            "value": 0.26663728315005736,
+            "ci95": [
+              0.24390874147492067,
+              0.29040813789107195
+            ]
+          }
+        },
+        "eeg_time_dose": {
+          "average_precision": {
+            "value": 0.5586567512188557,
+            "ci95": [
+              0.5172588258700183,
+              0.6067609849933727
+            ]
+          },
+          "auroc": {
+            "value": 0.6307143756768443,
+            "ci95": [
+              0.5888133759825861,
+              0.6691975458042022
+            ]
+          },
+          "brier": {
+            "value": 0.265308413837701,
+            "ci95": [
+              0.2432636256968828,
+              0.2890781992978087
+            ]
+          }
+        },
+        "clinical_history": {
+          "average_precision": {
+            "value": 0.5865217162469762,
+            "ci95": [
+              0.5462702902800057,
+              0.6271858492593274
+            ]
+          },
+          "auroc": {
+            "value": 0.6266898793680009,
+            "ci95": [
+              0.5941700009851683,
+              0.6565451758435096
+            ]
+          },
+          "brier": {
+            "value": 0.26151871751708744,
+            "ci95": [
+              0.24008942128472316,
+              0.28273368279560196
+            ]
+          }
+        },
+        "eeg_clinical_history": {
+          "average_precision": {
+            "value": 0.6191611374688175,
+            "ci95": [
+              0.5847951096886046,
+              0.6558310763809956
+            ]
+          },
+          "auroc": {
+            "value": 0.6855128545870705,
+            "ci95": [
+              0.6499631162487366,
+              0.716963261440349
+            ]
+          },
+          "brier": {
+            "value": 0.2523163656125456,
+            "ci95": [
+              0.23025682240344997,
+              0.2747458160300121
+            ]
+          }
+        }
+      },
+      "primary_comparison": {
+        "contrast": "eeg_clinical_history minus clinical_history",
+        "metric": "average_precision",
+        "value": 0.03263942122184127,
+        "ci95": [
+          0.007483519692993429,
+          0.0555073913566397
+        ]
+      },
+      "bootstrap_replicates": 1000,
+      "calibration": {
+        "frequency": [
+          {
+            "bin": 1,
+            "n": 5719,
+            "mean_prediction": 0.2566246712065603,
+            "observed_frequency": 0.44203532086029024
+          }
+        ],
+        "last_state": [
+          {
+            "bin": 1,
+            "n": 5379,
+            "mean_prediction": 0.24816195840926972,
+            "observed_frequency": 0.42889012827663137
+          },
+          {
+            "bin": 2,
+            "n": 340,
+            "mean_prediction": 0.4799239021487598,
+            "observed_frequency": 0.65
+          }
+        ],
+        "time_dose": [
+          {
+            "bin": 0,
+            "n": 205,
+            "mean_prediction": 0.19041136123635274,
+            "observed_frequency": 0.35609756097560974
+          },
+          {
+            "bin": 1,
+            "n": 5286,
+            "mean_prediction": 0.25302114162422457,
+            "observed_frequency": 0.4390843738176315
+          },
+          {
+            "bin": 2,
+            "n": 216,
+            "mean_prediction": 0.4653490376151435,
+            "observed_frequency": 0.5925925925925926
+          },
+          {
+            "bin": 3,
+            "n": 12,
+            "mean_prediction": 0.6330866960539142,
+            "observed_frequency": 0.5
+          }
+        ],
+        "eeg_only": [
+          {
+            "bin": 0,
+            "n": 1693,
+            "mean_prediction": 0.1454451359522741,
+            "observed_frequency": 0.3201417601890136
+          },
+          {
+            "bin": 1,
+            "n": 3372,
+            "mean_prediction": 0.2845118624539076,
+            "observed_frequency": 0.46826809015421117
+          },
+          {
+            "bin": 2,
+            "n": 611,
+            "mean_prediction": 0.4585213969149032,
+            "observed_frequency": 0.6235679214402619
+          },
+          {
+            "bin": 3,
+            "n": 39,
+            "mean_prediction": 0.6565798718828834,
+            "observed_frequency": 0.5897435897435898
+          },
+          {
+            "bin": 4,
+            "n": 4,
+            "mean_prediction": 0.8634158590683642,
+            "observed_frequency": 0.75
+          }
+        ],
+        "eeg_time_dose": [
+          {
+            "bin": 0,
+            "n": 1815,
+            "mean_prediction": 0.14342991604799668,
+            "observed_frequency": 0.3052341597796143
+          },
+          {
+            "bin": 1,
+            "n": 3108,
+            "mean_prediction": 0.2834663611440464,
+            "observed_frequency": 0.47812097812097815
+          },
+          {
+            "bin": 2,
+            "n": 724,
+            "mean_prediction": 0.4646081419404677,
+            "observed_frequency": 0.6091160220994475
+          },
+          {
+            "bin": 3,
+            "n": 67,
+            "mean_prediction": 0.6530164588474592,
+            "observed_frequency": 0.6417910447761194
+          },
+          {
+            "bin": 4,
+            "n": 5,
+            "mean_prediction": 0.8428856390577719,
+            "observed_frequency": 0.8
+          }
+        ],
+        "clinical_history": [
+          {
+            "bin": 0,
+            "n": 1610,
+            "mean_prediction": 0.15977602228467716,
+            "observed_frequency": 0.33975155279503105
+          },
+          {
+            "bin": 1,
+            "n": 3217,
+            "mean_prediction": 0.2561550893162222,
+            "observed_frequency": 0.4159154491762512
+          },
+          {
+            "bin": 2,
+            "n": 787,
+            "mean_prediction": 0.4884673269792462,
+            "observed_frequency": 0.7191867852604829
+          },
+          {
+            "bin": 3,
+            "n": 105,
+            "mean_prediction": 0.6572907196276975,
+            "observed_frequency": 0.7333333333333333
+          }
+        ],
+        "eeg_clinical_history": [
+          {
+            "bin": 0,
+            "n": 2155,
+            "mean_prediction": 0.13599424513097833,
+            "observed_frequency": 0.2802784222737819
+          },
+          {
+            "bin": 1,
+            "n": 2525,
+            "mean_prediction": 0.28061557688047556,
+            "observed_frequency": 0.48158415841584157
+          },
+          {
+            "bin": 2,
+            "n": 788,
+            "mean_prediction": 0.4797333931618035,
+            "observed_frequency": 0.666243654822335
+          },
+          {
+            "bin": 3,
+            "n": 220,
+            "mean_prediction": 0.669630529675886,
+            "observed_frequency": 0.7227272727272728
+          },
+          {
+            "bin": 4,
+            "n": 31,
+            "mean_prediction": 0.840952699675673,
+            "observed_frequency": 0.7741935483870968
+          }
+        ]
+      },
+      "operating_points": {
+        "last_state": {
+          "fpr": 0.03729238483234096,
+          "sensitivity": 0.08742088607594936
+        },
+        "time_dose": {
+          "fpr": 0.09432779692886242,
+          "sensitivity": 0.14596518987341772
+        },
+        "eeg_only": {
+          "fpr": 0.10310247571294265,
+          "sensitivity": 0.20688291139240506
+        },
+        "eeg_time_dose": {
+          "fpr": 0.10372923848323409,
+          "sensitivity": 0.20846518987341772
+        },
+        "clinical_history": {
+          "fpr": 0.09652146662488248,
+          "sensitivity": 0.28441455696202533
+        },
+        "eeg_clinical_history": {
+          "fpr": 0.09276089000313381,
+          "sensitivity": 0.2646360759493671
+        }
+      }
+    }
+  }
+}

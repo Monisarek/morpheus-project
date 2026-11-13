@@ -1,5 +1,22 @@
 # MORPHEUS / О-СОЗНАНИЕ-9000
 
+## EEG-002 v2
+
+Повторный аудит и поисковое моделирование используют все доступные записи EEG-001, включая прежнюю финальную группу. [Отчёт EEG-002](reports/EEG_002_REPORT.md) · [Протокол](EEG_002_PROTOCOL.md) · [Внешние данные](reports/EEG_002_EXTERNAL.md)
+
+Команды из каталога эксперимента. `LOCAL_RUN` — локальный каталог исходного EEG-001 с полными выгрузками разработки и holdout. `LOCAL_ARCHIVE` — исходный `data.zip` DOSE-I v2.
+
+```text
+python -m tools.replicate_eeg001 LOCAL_ARCHIVE LOCAL_RUN runs/eeg-002-replay local-replication.json
+python -m tools.audit_eeg002 --run LOCAL_RUN --archive LOCAL_ARCHIVE --output local-qc-audit.json
+python -m tools.explore_eeg002 --source LOCAL_RUN --output local-eeg-002
+python -m tools.audit_duplicate_timestamps LOCAL_ARCHIVE LOCAL_RUN runs/duplicate-audit local-duplicate-audit.json
+python reports/eeg_002_external_qc.py
+python -m unittest discover -s tests
+```
+
+## EEG-001
+
 Локальный CLI для изучения клинически размеченных переходов поведенческой отзывчивости в DOSE-I v2. Модели рассчитаны на ретроспективное исследование. Единица группировки и интервалов — запись DOSE-I.
 
 ## Запуск в PowerShell
